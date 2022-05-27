@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,7 +19,7 @@ public class CategorieProduit{
     
     public static ArrayList<String> getCategorie(){
         
-        ArrayList<String> listeCat = new ArrayList<String>();
+        ArrayList<String> listeCat = new ArrayList<>();
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
         String sqlCat = "select * from categorie_produit";
         
@@ -30,7 +31,7 @@ public class CategorieProduit{
                 String categorie = resCat.getString("nomCategorie");
                 listeCat.add(categorie);
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println(e);
         }
         return listeCat;
@@ -38,8 +39,10 @@ public class CategorieProduit{
     
     public static ArrayList<String> getSsCategorie(String s){
         
-        ArrayList<String> listeSsCat = new ArrayList<String>();
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        
+        ArrayList<String> listeSsCat = new ArrayList<>();
+        
         String sqlSsCat = "select nomSsCategorie from souscategorie_produit join categorie_produit using(idCategorie) where nomCategorie = '"+ s +"'";
         
         try {
@@ -50,7 +53,7 @@ public class CategorieProduit{
                 String Sscategorie = resSsCat.getString("nomSsCategorie");
                 listeSsCat.add(Sscategorie);
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println(e);
         }
         return listeSsCat;
@@ -58,7 +61,7 @@ public class CategorieProduit{
     
     public static ArrayList<String> getTotalSsCategorie(){
         
-        ArrayList<String> listeSsCat = new ArrayList<String>();
+        ArrayList<String> listeSsCat = new ArrayList<>();
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
         String sqlSsCat = "select nomSsCategorie from souscategorie_produit join categorie_produit using(idCategorie)";
         
@@ -70,9 +73,49 @@ public class CategorieProduit{
                 String Sscategorie = resSsCat.getString("nomSsCategorie");
                 listeSsCat.add(Sscategorie);
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println(e);
         }
         return listeSsCat;
+    }
+    
+    public static int getIdCategorie(String s){
+    
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sqlIdCat = "select idCategorie from categorie_produit where nomCategorie = '" + s + "'";
+        
+        try {
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pstIdCat = (PreparedStatement) connection.prepareStatement(sqlIdCat);
+            ResultSet resIdCat = pstIdCat.executeQuery();
+            while(resIdCat.next()){
+            int idCat = resIdCat.getInt("idCategorie");
+            System.out.println(idCat);
+            return idCat;
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }        
+        return 0;
+    }
+    
+    public static int getIdSsCategorie(String s){
+        
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sqlIdCat = "select idSsCategorie from souscategorie_produit where nomSsCategorie = '" + s + "'";
+        
+        try {
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pstIdCat = (PreparedStatement) connection.prepareStatement(sqlIdCat);
+            ResultSet resIdCat = pstIdCat.executeQuery();
+            while(resIdCat.next()){
+            int idSsCat = resIdCat.getInt("idSsCategorie");
+            System.out.println(idSsCat);
+            return idSsCat;
+             }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return 0;
     }
 }
