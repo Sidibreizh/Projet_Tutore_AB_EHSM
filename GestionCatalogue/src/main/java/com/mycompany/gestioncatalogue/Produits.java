@@ -4,38 +4,17 @@
  */
 package com.mycompany.gestioncatalogue;
 
-import IHM.IHM_Catalogue;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
  * @author elyes
  */
 public class Produits {
-    private int idSsCat, idMarque, idFournisseur, idSolde, etatSolde;
-    private float prix, prixSolde;
-    private String nom, descriptionCat,imgCat,descriptionSsCat, imgSsCat;
-    
-   /* public Produits(int idSsCat, int idMarque, int idFournisseur, int idSolde, String nom, float prix, float prixSolde, int etatSolde, String descriptionCat, String imgCat, String descriptionSsCat, String imgSsCat){
-        this.idSsCat = idSsCat;
-        this.idMarque = idMarque;
-        this.idFournisseur = idFournisseur;
-        this.idSolde = idSolde;
-        this.nom = nom;
-        this.prix = prix;
-        this.prixSolde = prixSolde;
-        this.etatSolde = etatSolde;
-        this.descriptionCat = descriptionCat;
-        this.imgCat = imgCat;
-        this.descriptionSsCat = descriptionSsCat;
-        this.imgSsCat = imgSsCat;
-        
-    }*/
     
     public static float Solde(float prix, int idSolde){
          String url = "jdbc:mysql://localhost:3306/croquetteatemps";
@@ -59,7 +38,7 @@ public class Produits {
    public static boolean creeProduit(int idSsCat, int idMarque, int idFournisseur, int idSolde, String nom, float prix, float prixSolde, int etatSolde, String description, String img){
         
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
-        String sqlPro = "insert into produit(idSsCategorie,idMarque,idFournisseur,idSolde,nom,prix,prixSolde,etatSolde,description,img) values (?,?,?,?,?,?,?,?,?,?)";
+        String sqlPro = "insert into produit(idSsCategorie,idMarque,idFournisseur,idSolde,nom,prix,prixSolde,etatSolde,descriptionProd,imgProd) values (?,?,?,?,?,?,?,?,?,?)";
               
         try {
                 Connection connection = DriverManager.getConnection(url, "root", "");
@@ -71,9 +50,9 @@ public class Produits {
                 pstProd.setString(5, nom);
                 pstProd.setFloat(6, prix);
                 pstProd.setFloat(7, prixSolde);
-                pstProd.setInt(9, etatSolde);
-                pstProd.setString(10, description);
-                pstProd.setString(8, img);
+                pstProd.setInt(8, etatSolde);
+                pstProd.setString(9, description);
+                pstProd.setString(10, img);
                 pstProd.execute();
                 
                 return(true);
