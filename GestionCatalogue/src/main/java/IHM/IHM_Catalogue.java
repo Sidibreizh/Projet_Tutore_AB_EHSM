@@ -2,8 +2,13 @@ package IHM;
 
 import com.mycompany.gestioncatalogue.CategorieProduit;
 import com.mycompany.gestioncatalogue.ConnexionDAO;
+import com.mycompany.gestioncatalogue.Fournisseur;
+import com.mycompany.gestioncatalogue.Marque;
 import com.mycompany.gestioncatalogue.Produits;
+import com.mycompany.gestioncatalogue.Solde;
+import com.mycompany.gestioncatalogue.Stocks;
 import java.awt.Component;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +24,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         ConnexionDAO.Connexion(); 
         affecterCat(); 
         affecterTotalSsCat();
+        affecterSolde();
+        affecterMarque();
+        affecterFournisseur();
         PanResult.setVisible(false);
     }  
     
@@ -36,11 +44,28 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         for(int i =0;i<tabCat.length;i++){
             cb_ssCateg.addItem((String)tabCat[i]);
         }
-    }      
+    }
     
-   /* private void creeProduit(idCateg){
-       // idSsCategorie,idMarque,idFournisseur,idSolde,nom,prix,prixSolde,etatSolde,descriptionCat,imgCat,descriptionSsCat,imgSsCat
-    }*/
+    private void affecterSolde(){
+        Object[] tabSolde = Solde.getSolde().toArray();
+        for(int i =0;i<tabSolde.length;i++){
+            cb_Solde.addItem(tabSolde[i].toString());
+        }  
+    }
+    
+    private void affecterMarque(){
+        Object[] tabMarque = Marque.getMarque().toArray();
+        for(int i =0;i<tabMarque.length;i++){
+            cb_marque.addItem(tabMarque[i].toString());
+        }  
+    }
+    
+    private void affecterFournisseur(){
+        Object[] tabFourni = Fournisseur.getFournisseur().toArray();
+        for(int i =0;i<tabFourni.length;i++){
+            cb_fournisseur.addItem(tabFourni[i].toString());
+        }  
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,9 +114,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         lbl_alerteMin = new javax.swing.JLabel();
         tf_alerteMin = new javax.swing.JTextField();
         lbl_Marque = new javax.swing.JLabel();
-        tf_Marque = new javax.swing.JTextField();
         IDFournisseur = new javax.swing.JLabel();
-        tf_fourni = new javax.swing.JTextField();
         Pan_ModifSuppr = new javax.swing.JPanel();
         ButSuppr = new javax.swing.JButton();
         ButModif = new javax.swing.JButton();
@@ -101,9 +124,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         ButAdd = new javax.swing.JButton();
         ButCancel = new javax.swing.JButton();
         lblsolde = new javax.swing.JLabel();
-        tf_solde = new javax.swing.JTextField();
         lbl_alerteMax = new javax.swing.JLabel();
         tf_alerteMax = new javax.swing.JTextField();
+        cb_Solde = new javax.swing.JComboBox<>();
+        percent = new javax.swing.JLabel();
+        cb_marque = new javax.swing.JComboBox<>();
+        cb_fournisseur = new javax.swing.JComboBox<>();
         jPanAjouter = new javax.swing.JPanel();
         jButAdd = new javax.swing.JButton();
         PanelCat = new javax.swing.JPanel();
@@ -205,6 +231,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         lbl_Libelle.setText("Libellé :");
 
         lbl_Cat.setText("Catégorie :");
+
+        tf_Libelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_LibelleActionPerformed(evt);
+            }
+        });
 
         cb_Cat.setToolTipText("");
         cb_Cat.addItemListener(new java.awt.event.ItemListener() {
@@ -385,7 +417,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         lbl_prix_Reduit.setText("Prix Réduit :");
 
-        tf_prixRed.setEnabled(false);
+        tf_prixRed.setText("0");
         tf_prixRed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_prixRedActionPerformed(evt);
@@ -396,15 +428,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         lbl_alerteMin.setText("Seuil d'alerte minimal :");
 
-        lbl_Marque.setText("ID Marque :");
+        lbl_Marque.setText("Marque :");
 
-        IDFournisseur.setText("ID Fournisseur :");
-
-        tf_fourni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_fourniActionPerformed(evt);
-            }
-        });
+        IDFournisseur.setText("Fournisseur :");
 
         ButSuppr.setText("Supprimer le produit");
 
@@ -455,6 +481,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
 
         ButCancel.setText("Annuler");
+        ButCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButCancelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanAddLayout = new javax.swing.GroupLayout(PanAdd);
         PanAdd.setLayout(PanAddLayout);
@@ -477,16 +508,31 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addContainerGap())
         );
 
-        lblsolde.setText("ID Solde :");
+        lblsolde.setText("Solde :");
 
-        tf_solde.setText(" ");
-        tf_solde.addActionListener(new java.awt.event.ActionListener() {
+        lbl_alerteMax.setText("Seuil d'alerte maximal :");
+
+        cb_Solde.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_SoldeItemStateChanged(evt);
+            }
+        });
+        cb_Solde.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_SoldeMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cb_SoldeMousePressed(evt);
+            }
+        });
+        cb_Solde.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_soldeActionPerformed(evt);
+                cb_SoldeActionPerformed(evt);
             }
         });
 
-        lbl_alerteMax.setText("Seuil d'alerte maximal :");
+        percent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        percent.setText("%");
 
         javax.swing.GroupLayout PanResultLayout = new javax.swing.GroupLayout(PanResult);
         PanResult.setLayout(PanResultLayout);
@@ -495,6 +541,57 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             .addGroup(PanResultLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanResultLayout.createSequentialGroup()
+                        .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanResultLayout.createSequentialGroup()
+                                .addComponent(lbl_description)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Scroll_description, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanResultLayout.createSequentialGroup()
+                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(IDFournisseur)
+                                    .addComponent(lbl_prix))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanResultLayout.createSequentialGroup()
+                                        .addComponent(tf_prix, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbl_promo)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(Radio_oui)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Radio_non)
+                                        .addGap(144, 144, 144)
+                                        .addComponent(lblsolde)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cb_Solde, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(percent, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37))
+                                    .addGroup(PanResultLayout.createSequentialGroup()
+                                        .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PanResultLayout.createSequentialGroup()
+                                                .addGap(171, 171, 171)
+                                                .addComponent(lbl_qte)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(tf_qte, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cb_fournisseur, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbl_alerteMin)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tf_alerteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(93, 93, 93)))))
+                        .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanResultLayout.createSequentialGroup()
+                                .addComponent(lbl_prix_Reduit)
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_prixRed, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanResultLayout.createSequentialGroup()
+                                .addComponent(lbl_alerteMax)
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_alerteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanResultLayout.createSequentialGroup()
                         .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanResultLayout.createSequentialGroup()
@@ -517,61 +614,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                             .addComponent(lbl_Marque))
                         .addGap(18, 18, 18)
                         .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_Marque, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_ssCat1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanResultLayout.createSequentialGroup()
-                        .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanResultLayout.createSequentialGroup()
-                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(IDFournisseur)
-                                    .addComponent(lbl_prix))
-                                .addGap(18, 18, 18)
-                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addComponent(tf_fourni, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(108, 108, 108)
-                                        .addComponent(lbl_qte)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addComponent(tf_prix, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbl_promo)))
-                                .addGap(33, 33, 33)
-                                .addComponent(Radio_oui)
-                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Radio_non)
-                                        .addGap(144, 144, 144)
-                                        .addComponent(lblsolde)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tf_solde, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(77, 77, 77))
-                                    .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addGap(172, 172, 172)
-                                        .addComponent(tf_alerteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbl_alerteMax)
-                                        .addGap(9, 9, 9))))
-                            .addGroup(PanResultLayout.createSequentialGroup()
-                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addGap(323, 323, 323)
-                                        .addComponent(tf_qte, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbl_alerteMin))
-                                    .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addComponent(lbl_description)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Scroll_description, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(162, 162, 162)))
-                        .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanResultLayout.createSequentialGroup()
-                                .addComponent(lbl_prix_Reduit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_prixRed, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tf_alerteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cb_ssCat1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_marque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(PanResultLayout.createSequentialGroup()
                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanResultLayout.createSequentialGroup()
@@ -606,7 +651,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                                 .addComponent(tf_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbl_Marque)
-                                .addComponent(tf_Marque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cb_marque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanResultLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
@@ -619,11 +664,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                         .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(tf_prix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tf_solde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_prix)
                                 .addComponent(lbl_prix_Reduit)
                                 .addComponent(tf_prixRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblsolde))
+                                .addComponent(lblsolde)
+                                .addComponent(cb_Solde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(percent, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbl_promo)
                                 .addComponent(Radio_oui)
@@ -632,18 +678,22 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                             .addGroup(PanResultLayout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(IDFournisseur)
                                     .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tf_fourni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(IDFournisseur)
+                                        .addComponent(cb_fournisseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(lbl_qte)
-                                        .addComponent(tf_qte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl_alerteMin)
-                                        .addComponent(tf_alerteMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(tf_qte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(PanResultLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbl_alerteMax)
-                                    .addComponent(tf_alerteMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(tf_alerteMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PanResultLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_alerteMin)
+                                    .addComponent(tf_alerteMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tf_ImageProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanResultLayout.createSequentialGroup()
@@ -917,10 +967,10 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(PanResCatLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanResCatLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(205, 205, 205))
         );
         PanResCatLayout.setVerticalGroup(
             PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -955,7 +1005,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(PanSearchCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(PanResCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(529, Short.MAX_VALUE))
+                .addContainerGap(530, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Catégories", PanelCat);
@@ -1143,7 +1193,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addContainerGap(583, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Promotions", PanelPromo);
@@ -1317,7 +1367,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(PanSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(530, Short.MAX_VALUE))
+                .addContainerGap(531, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Clients", PanelClients);
@@ -1394,7 +1444,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_Radio_ouiActionPerformed
 
     private void tf_prixRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_prixRedActionPerformed
-        
+         
     }//GEN-LAST:event_tf_prixRedActionPerformed
 
     private void Button_Search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Search1ActionPerformed
@@ -1432,10 +1482,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private void jButAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButAddActionPerformed
-
-    private void tf_fourniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_fourniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_fourniActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
@@ -1475,7 +1521,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private void jMenuVersionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVersionActionPerformed
          JOptionPane.showMessageDialog(this, "TP3 Java avancé, Elyes HADJ SALAH MAGRE - Alix BERNARDO", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuVersionActionPerformed
-
     private void jMenuQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuQuitterActionPerformed
         int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment quitter ?", "Attention", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION)
@@ -1506,13 +1551,65 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_cb_CategItemStateChanged
 
     private void Button_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_SearchMouseClicked
+
+        String libelle = tf_Libelle.getText();
+        
+        if(!libelle.equals(" ")){ 
+        for (Component c : PanSearch.getComponents()){
+            c.setEnabled(false);
+        } 
         PanResult.setVisible(true);
         PanAdd.setVisible(false);
         Pan_ModifSuppr.setVisible(true);
         ta_description.enable(false);
         for (Component c : PanResult.getComponents()){
             c.setEnabled(false);
-        }    
+        }  
+        
+        String idProd = String.valueOf(Produits.getProduit(libelle).getIdProduit());
+        String marque = Marque.getMarque(Produits.getProduit(libelle).getIdMarque());
+        String fournisseur = Fournisseur.getFournisseur(Produits.getProduit(libelle).getIdFournisseur());
+        String solde = String.valueOf(Solde.getSolde(Produits.getProduit(libelle).getIdSolde())); 
+        String nom = Produits.getProduit(libelle).getNom();
+        String prix = String.valueOf(Produits.getProduit(libelle).getPrix());
+        String prixSolde = String.valueOf(Produits.getProduit(libelle).getPrixSolde());
+        int etatSolde = Produits.getProduit(libelle).getEtatSolde();
+        String description = String.valueOf(Produits.getProduit(libelle).getDescriptionProd());
+        String image = String.valueOf(Produits.getProduit(libelle).getImgProd());
+            
+            tf_ID.setText(idProd);
+            tf_prod.setText(nom);
+            cb_marque.setSelectedItem(marque);
+            cb_fournisseur.setSelectedItem(fournisseur);
+            cb_Solde.setSelectedItem(solde); 
+            tf_prix.setText(prix);
+            tf_prixRed.setText(prixSolde);
+            ta_description.setText(description);
+            tf_ImageProd.setText(image);
+            cb_cat.setSelectedItem(cb_Cat.getSelectedItem().toString());
+            cb_ssCat1.setSelectedItem(cb_ssCat.getSelectedItem().toString());
+            if(etatSolde == 1){
+                Radio_oui.setSelected(true);
+                Radio_non.setSelected(false);
+            }
+            if(etatSolde == 0){
+                Radio_oui.setSelected(true);
+                Radio_non.setSelected(false);
+            }
+        
+            Object[]tabStock = Stocks.getStock(Produits.getProduit(libelle).getIdProduit()).toArray();
+            String qte = tabStock[0].toString();
+            tf_qte.setText(qte);
+            String alertMin = tabStock[1].toString();
+            tf_alerteMin.setText(alertMin);
+            String alertMax = tabStock[2].toString();
+            tf_alerteMax.setText(alertMax);  
+            Button_Search.enable(false);
+            Button_effacer.enable(false);
+        }
+        else{
+          JOptionPane.showMessageDialog(this, "Saisissez le libellé d'un produit svp.");  
+        }
     }//GEN-LAST:event_Button_SearchMouseClicked
 
     private void cb_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_catActionPerformed
@@ -1536,8 +1633,27 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             c.setEnabled(true);
         }    
         tf_ID.enable(false);
+        tf_ID.setText(" ");
         tf_prixRed.enable(false);
-        tf_solde.enable(false);
+        cb_Solde.enable(false);
+        cb_cat.setSelectedIndex(0);
+        cb_ssCat1.setSelectedIndex(0);
+        cb_Solde.setSelectedIndex(0);
+        cb_Solde.enable(false);
+        cb_marque.setSelectedIndex(0);
+        cb_fournisseur.setSelectedIndex(0);
+        tf_prod.setText(" ");
+        ta_description.setText(" ");
+        ta_description.enable(true);
+        tf_prix.setText(" ");
+        tf_prixRed.setText("0");
+        tf_prixRed.enable(false);
+        Radio_oui.setSelected(false);
+        Radio_non.setSelected(false);
+        tf_qte.setText(" ");
+        tf_alerteMin.setText(" ");
+        tf_alerteMax.setText(" ");
+        tf_ImageProd.setText(" ");
     }//GEN-LAST:event_jButAddMouseClicked
 
     private void tf_ImageProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ImageProdActionPerformed
@@ -1546,37 +1662,45 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
     private void ButAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButAddMouseClicked
         int etatSolde = 0;
-        String sscat = cb_ssCat1.getSelectedItem().toString();
-        int idSsCateg = CategorieProduit.getIdSsCategorie(sscat);
+        if(Radio_non.isSelected()){
+            cb_Solde.enable(false);
+            etatSolde = 0;
+            }
+        
+        if(Radio_oui.isSelected()){
+            cb_Solde.enable(true);
+            etatSolde = 1;  
+        }
+        
+        int idSsCateg = CategorieProduit.getIdSsCategorie(cb_ssCat1.getSelectedItem().toString());
         String libelprod = tf_prod.getText();
-        int idmarque = Integer.parseInt(tf_Marque.getText());
+        int idmarque = Marque.getIdMarque(cb_marque.getSelectedItem().toString());
         String descriptionProd = ta_description.getText();
         float prix = Float.valueOf(tf_prix.getText());
-        int idSolde = Integer.parseInt(tf_solde.getText());
-        float prixReduit = Float.valueOf(null);
-        String imageProd = tf_ImageProd.getText();        
-        int idfournisseur = Integer.parseInt(tf_fourni.getText());
+        int idSolde = Solde.getIdSolde(cb_Solde.getSelectedItem().toString());
+        float prixReduit = Float.valueOf(tf_prixRed.getText()); 
+        String imageProd = tf_ImageProd.getText(); 
+        int idfournisseur = Fournisseur.getIdFournisseur(cb_fournisseur.getSelectedItem().toString());
         int quantite = Integer.parseInt(tf_qte.getText());
         int seuilMin = Integer.parseInt(tf_alerteMin.getText());
         int seuilMax = Integer.parseInt(tf_alerteMax.getText()); 
-                        
-            if(Radio_oui.isSelected()){
-                etatSolde = 1;
-                prixReduit = Float.valueOf(tf_prixRed.getText());
-            }
         
+        
+
         int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter ce produit ?", "Attention", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION)
         {
-            if(Produits.creeProduit(idSsCateg,idmarque,idfournisseur,idSolde,libelprod,prix,prixReduit,etatSolde,descriptionProd,imageProd) == true){
+            LocalDate date = Produits.dateProduit();
+            if(Produits.creeProduit(idSsCateg,idmarque,idfournisseur,idSolde,libelprod,prix,prixReduit,etatSolde,descriptionProd,imageProd,date) == true){
+                int idProduit = Produits.recupIdProduit();
+                if(Stocks.creeStock(idProduit,quantite,seuilMin,seuilMax) == true){
                 JOptionPane.showMessageDialog(this, "Le produit est bien ajouté dans la base de données.");
-                
+                }
             }
             else{
                 JOptionPane.showMessageDialog(this, "Le produit n'a pas été ajouté ! Vérifiez vos données s'il vous plaît.");
             }
         }    
-        
     }//GEN-LAST:event_ButAddMouseClicked
 
     private void cb_ssCat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ssCat1ActionPerformed
@@ -1600,35 +1724,72 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_jMenuQuitterMouseClicked
 
     private void ButAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAddActionPerformed
-        
- 
+
     }//GEN-LAST:event_ButAddActionPerformed
 
     private void Radio_ouiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio_ouiMouseClicked
         Radio_oui.setSelected(true);
         Radio_non.setSelected(false);
-        tf_solde.setText("");
-        tf_solde.enable(true);      
+        cb_Solde.enable(true);      
     }//GEN-LAST:event_Radio_ouiMouseClicked
 
     private void Radio_nonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio_nonMouseClicked
         Radio_non.setSelected(true);
         Radio_oui.setSelected(false);
-        tf_solde.setText("1");
-        tf_solde.enable(false);
+        cb_Solde.enable(false);
+        tf_prixRed.setText("0");
     }//GEN-LAST:event_Radio_nonMouseClicked
-
-    private void tf_soldeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_soldeActionPerformed
-        float prix = Float.valueOf(tf_prix.getText());
-        int solde = Integer.parseInt(tf_solde.getText());
-        float prixReduit = Produits.Solde(prix,solde);
-        tf_prixRed.setText(Float.toString(prixReduit));
-    }//GEN-LAST:event_tf_soldeActionPerformed
 
     private void tf_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_IDActionPerformed
 
     }//GEN-LAST:event_tf_IDActionPerformed
 
+    private void tf_LibelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_LibelleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_LibelleActionPerformed
+
+    private void cb_SoldeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_SoldeActionPerformed
+        
+    }//GEN-LAST:event_cb_SoldeActionPerformed
+
+    private void cb_SoldeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_SoldeMouseClicked
+        if(Radio_oui.isSelected()){
+        float prix = Float.valueOf(tf_prix.getText());
+        int idSolde = Solde.getIdSolde(cb_Solde.getSelectedItem().toString());
+        int solde = Solde.getSolde(idSolde);
+        float prixReduit = Produits.PrixSolde(prix,solde);
+        String prixRed = String.valueOf(prixReduit);
+        tf_prixRed.setText(prixRed);
+        } 
+    }//GEN-LAST:event_cb_SoldeMouseClicked
+
+    private void cb_SoldeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_SoldeMousePressed
+        
+    }//GEN-LAST:event_cb_SoldeMousePressed
+
+    private void cb_SoldeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_SoldeItemStateChanged
+        
+    }//GEN-LAST:event_cb_SoldeItemStateChanged
+
+    private void ButCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButCancelMouseClicked
+        cb_Cat.setSelectedIndex(0);
+        cb_ssCat.setSelectedIndex(0);
+        cb_Solde.setSelectedIndex(0);
+        cb_Solde.enable(false);
+        cb_marque.setSelectedIndex(0);
+        cb_fournisseur.setSelectedIndex(0);
+        tf_prod.setText(" ");
+        ta_description.setText(" ");
+        tf_prix.setText(" ");
+        tf_prixRed.setText("0");
+        tf_prixRed.enable(false);
+        Radio_oui.setSelected(false);
+        Radio_non.setSelected(false);
+        tf_qte.setText(" ");
+        tf_alerteMin.setText(" ");
+        tf_alerteMax.setText(" ");
+        tf_ImageProd.setText(" ");
+    }//GEN-LAST:event_ButCancelMouseClicked
     /**
      * @param args the command line arguments
      */
@@ -1639,7 +1800,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             new IHM_Catalogue().setVisible(true);
         });
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButAdd;
     private javax.swing.JButton ButCancel;
@@ -1678,7 +1838,10 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JTable TableauCat;
     private javax.swing.JComboBox<String> cb_Cat;
     private javax.swing.JComboBox<String> cb_Categ;
+    private javax.swing.JComboBox<String> cb_Solde;
     private javax.swing.JComboBox<String> cb_cat;
+    private javax.swing.JComboBox<String> cb_fournisseur;
+    private javax.swing.JComboBox<String> cb_marque;
     private javax.swing.JComboBox<String> cb_ssCat;
     private javax.swing.JComboBox<String> cb_ssCat1;
     private javax.swing.JComboBox<String> cb_ssCateg;
@@ -1752,19 +1915,17 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JLabel lbl_ssCat1;
     private javax.swing.JLabel lbl_ssCateg;
     private javax.swing.JLabel lblsolde;
+    private javax.swing.JLabel percent;
     private javax.swing.JTextArea ta_description;
     private javax.swing.JTabbedPane tabPC;
     private javax.swing.JTextField tf_ID;
     private java.awt.TextField tf_ImageProd;
     private javax.swing.JTextField tf_Libelle;
-    private javax.swing.JTextField tf_Marque;
     private javax.swing.JTextField tf_alerteMax;
     private javax.swing.JTextField tf_alerteMin;
-    private javax.swing.JTextField tf_fourni;
     private javax.swing.JTextField tf_prix;
     private javax.swing.JTextField tf_prixRed;
     private javax.swing.JTextField tf_prod;
     private javax.swing.JTextField tf_qte;
-    private javax.swing.JTextField tf_solde;
     // End of variables declaration//GEN-END:variables
 }

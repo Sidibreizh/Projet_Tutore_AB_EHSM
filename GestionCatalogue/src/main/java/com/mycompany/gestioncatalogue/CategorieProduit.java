@@ -31,6 +31,7 @@ public class CategorieProduit{
                 String categorie = resCat.getString("nomCategorie");
                 listeCat.add(categorie);
             }
+            connection.close();
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -53,6 +54,7 @@ public class CategorieProduit{
                 String Sscategorie = resSsCat.getString("nomSsCategorie");
                 listeSsCat.add(Sscategorie);
             }
+            connection.close();
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -73,6 +75,7 @@ public class CategorieProduit{
                 String Sscategorie = resSsCat.getString("nomSsCategorie");
                 listeSsCat.add(Sscategorie);
             }
+            connection.close();
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -90,7 +93,7 @@ public class CategorieProduit{
             ResultSet resIdCat = pstIdCat.executeQuery();
             while(resIdCat.next()){
             int idCat = resIdCat.getInt("idCategorie");
-            System.out.println(idCat);
+            connection.close();
             return idCat;
             }
         }catch(SQLException e){
@@ -109,9 +112,9 @@ public class CategorieProduit{
             PreparedStatement pstIdCat = (PreparedStatement) connection.prepareStatement(sqlIdCat);
             ResultSet resIdCat = pstIdCat.executeQuery();
             while(resIdCat.next()){
-            int idSsCat = resIdCat.getInt("idSsCategorie");
-            System.out.println(idSsCat);
-            return idSsCat;
+                int idSsCat = resIdCat.getInt("idSsCategorie");
+                connection.close();
+                return idSsCat;
              }
         }catch(SQLException e){
             System.out.println(e);

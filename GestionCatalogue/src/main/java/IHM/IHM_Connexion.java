@@ -59,6 +59,11 @@ public class IHM_Connexion extends javax.swing.JFrame {
         });
 
         Butt_connexion.setText("Connexion");
+        Butt_connexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Butt_connexionMouseClicked(evt);
+            }
+        });
         Butt_connexion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Butt_connexionActionPerformed(evt);
@@ -166,6 +171,13 @@ public class IHM_Connexion extends javax.swing.JFrame {
     private void Butt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Butt_pwdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Butt_pwdActionPerformed
+
+    private void Butt_connexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Butt_connexionMouseClicked
+        
+        
+        
+        
+    }//GEN-LAST:event_Butt_connexionMouseClicked
 
     /**
      * @param args the command line arguments

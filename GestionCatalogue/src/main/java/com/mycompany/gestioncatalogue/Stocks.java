@@ -9,24 +9,69 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author elyes
  */
 public class Stocks {
-    public static boolean creeStock(int quantite,int seuilMin,int seuilMax){
+    
+    private int idProduit, quantite, seuilMin, seuilMax;
+    
+    public Stocks(int quantite,int seuilMin,int seuilMax){
+        this.quantite = quantite;
+        this.seuilMin = seuilMin;
+        this.seuilMax = seuilMax;
+    }
+    
+    public static boolean creeStock(int idProduit, int quantite,int seuilMin,int seuilMax){       
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
-        String sqlStock = "insert into stocks(quantite,quantiteMin,quantiteMax) values (?,?,?)";
+        String sqlStock = "insert into stocks(idProduit,quantite,quantiteMin,quantiteMax) values (?,?,?,?)";
         try {
             Connection connection = DriverManager.getConnection(url, "root", "");
             PreparedStatement pstStock = (PreparedStatement) connection.prepareStatement(sqlStock);
-            ResultSet resStock = pstStock.executeQuery();
-            while(resStock.next()){
-            resStock.getInt("pourcentage_Solde");
-            }
+            pstStock.setInt(1,idProduit);
+            pstStock.setInt(2,quantite);
+            pstStock.setInt(3, seuilMin);
+            pstStock.setInt(4, seuilMax);
+            pstStock.execute();
+            connection.close();
+            return(true);
         }catch(SQLException e){
             System.out.println(e);
-            return false;
-        } 
+            return(false);
+        }  
+    }
+    
+    public static ArrayList<Integer> getStock(int idProduit) { // recuperation des donnees sql vers java
+        
+        String sqlStock = "select quantite, quantiteMin, quantiteMax from stocks where idProduit =" + idProduit + "" ;
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        ArrayList<Integer> listeStocks = new ArrayList<>();
+        
+        try{
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(sqlStock);
+            ResultSet res = pst.executeQuery();
+            if(res.next()) {
+                int quantite = res.getInt("quantite"); 
+                listeStocks.add(quantite);
+                int quantiteMin = res.getInt("quantiteMin");
+                listeStocks.add(quantiteMin);
+                int quantiteMax = res.getInt("quantiteMax");
+                listeStocks.add(quantiteMax);
+                connection.close();
+                return listeStocks;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+   /* public static boolean clearSaisieStock(int quantite,int seuilMin,int seuilMax){
+       
+       
+    }*/
 }
