@@ -70,8 +70,36 @@ public class Stocks {
         return null;
     }
     
-   /* public static boolean clearSaisieStock(int quantite,int seuilMin,int seuilMax){
-       
-       
-    }*/
+    public static boolean modifStock(int idProduit, int quantite,int seuilMin,int seuilMax){       
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sqlStock = "update stocks set quantite = ?,quantiteMin = ?,quantiteMax = ? where idProduit = "+ idProduit;
+        try {
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pstStock = (PreparedStatement) connection.prepareStatement(sqlStock);
+            pstStock.setInt(1,quantite);
+            pstStock.setInt(2, seuilMin);
+            pstStock.setInt(3, seuilMax);
+            pstStock.execute();
+            connection.close();
+            return(true);
+        }catch(SQLException e){
+            System.out.println(e);
+            return(false);
+        }  
+    }
+    
+    public static boolean supprProduit(int idProduit){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "delete from stocks where idProduit=?" ;
+        try{
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pst= (PreparedStatement) connection.prepareStatement(sql);
+                pst.setInt(1, idProduit);
+                pst.execute();
+                return(true);
+        } catch (SQLException e) {
+                System.out.println(e);      
+        }
+        return(false);
+    }  
 }

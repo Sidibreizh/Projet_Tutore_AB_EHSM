@@ -100,7 +100,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,92,0,0,4,30"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-11,0,0,4,30"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -111,6 +111,9 @@
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
           </Border>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Constraints>
@@ -159,7 +162,7 @@
                       <Component id="PanSearch" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PanResult" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="426" max="32767" attributes="0"/>
+                      <EmptySpace pref="384" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -446,28 +449,33 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cb_ssCat1" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="cb_marque" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_marque" min="-2" pref="127" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="Pan_ModifSuppr" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_ImageProd" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tf_ImageProd" alignment="0" min="-2" pref="927" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lbl_ImageProd" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tf_ImageProd" min="-2" pref="927" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="Pan_ModifSuppr" min="-2" max="-2" attributes="0"/>
-                                      <Component id="PanAdd" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Component id="PanAdd" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="412" max="-2" attributes="0"/>
+                          <Component id="ButValider" min="-2" pref="162" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -475,8 +483,8 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lbl_ID" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -554,19 +562,17 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="tf_ImageProd" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="lbl_ImageProd" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lbl_ImageProd" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="PanAdd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ButValider" min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
                           <Component id="Pan_ModifSuppr" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -726,20 +732,21 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="149" max="32767" attributes="0"/>
-                              <Component id="ButModif" min="-2" pref="140" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="ButModif" min="-2" pref="139" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                               <Component id="ButSuppr" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="butAnnuler" min="-2" pref="137" max="-2" attributes="0"/>
+                              <EmptySpace pref="89" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ButModif" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="ButSuppr" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="ButSuppr" alignment="0" pref="38" max="32767" attributes="0"/>
+                          <Component id="butAnnuler" alignment="1" max="32767" attributes="0"/>
+                          <Component id="ButModif" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -754,7 +761,16 @@
                         <Property name="text" type="java.lang.String" value="Modifier le produit"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButModifMouseClicked"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButModifActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="butAnnuler">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Annuler"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="butAnnulerMouseClicked"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -780,18 +796,18 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="ButAdd" min="-2" pref="139" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                              <Component id="ButCancel" min="-2" pref="137" max="-2" attributes="0"/>
-                              <EmptySpace pref="158" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                              <Component id="ButAdd" min="-2" pref="141" max="-2" attributes="0"/>
+                              <EmptySpace pref="88" max="32767" attributes="0"/>
+                              <Component id="ButCancel" min="-2" pref="138" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="ButCancel" pref="30" max="32767" attributes="0"/>
                                   <Component id="ButAdd" max="32767" attributes="0"/>
@@ -877,6 +893,15 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JButton" name="ButValider">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Valider la modification"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButValiderMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButValiderActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanAjouter">
@@ -956,8 +981,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PanSearchCat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="PanResCat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="530" max="32767" attributes="0"/>
+                      <Component id="PanResCat" min="-2" pref="506" max="-2" attributes="0"/>
+                      <EmptySpace pref="401" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1108,6 +1133,7 @@
                         <Property name="text" type="java.lang.String" value="Rechercher"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_Search1MouseClicked"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Search1ActionPerformed"/>
                       </Events>
                     </Component>
@@ -1140,15 +1166,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="1022" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" pref="1022" max="32767" attributes="0"/>
+                              <Component id="PanCatams" alignment="1" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="PannCreerModiSuppr" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1157,9 +1181,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="237" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PannCreerModiSuppr" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="PanCatams" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1206,6 +1230,7 @@
                             </Column>
                           </TableColumnModel>
                         </Property>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
@@ -1213,90 +1238,164 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="PannCreerModiSuppr">
+                <Container class="javax.swing.JPanel" name="PanCatams">
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="17" max="32767" attributes="0"/>
-                              <Component id="ButCreerSsCat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="ButModifSsCat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="ButSupSsCat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lbl_ssCateg1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_categ1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextField5" max="32767" attributes="0"/>
+                                  <Component id="jTextField9" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="664" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="ButCreerCat" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
+                              <Component id="PannCreerModiSuppr" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="ButModifCat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="ButSupCat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="ButCreerCat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ButModifCat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ButSupCat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_categ1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="ButCreerSsCat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ButModifSsCat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ButSupSsCat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_ssCateg1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="PannCreerModiSuppr" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="ButCreerCat">
+                    <Component class="javax.swing.JLabel" name="lbl_categ1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Cr&#xe9;er une cat&#xe9;gorie"/>
+                        <Property name="text" type="java.lang.String" value="Cat&#xe9;gorie :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="ButModifCat">
+                    <Component class="javax.swing.JLabel" name="lbl_ssCateg1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Modifier une cat&#xe9;gorie"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButModifCatActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="ButSupCat">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Supprimer une cat&#xe9;gorie"/>
+                        <Property name="text" type="java.lang.String" value="Sous-Cat&#xe9;gorie :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="ButCreerSsCat">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cr&#xe9;er une sous-cat&#xe9;gorie"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButCreerSsCatActionPerformed"/>
-                      </Events>
+                    <Container class="javax.swing.JPanel" name="PannCreerModiSuppr">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Component id="ButCreerSsCat" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="ButModifSsCat" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="ButSupSsCat" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                          <Component id="ButCreerCat" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="ButModifCat" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                          <Component id="ButSupCat" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ButCreerCat" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="ButModifCat" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                              <Component id="ButSupCat" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="ButCreerSsCat" alignment="0" pref="38" max="32767" attributes="0"/>
+                                      <Component id="ButModifSsCat" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="ButSupSsCat" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JButton" name="ButCreerCat">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Cr&#xe9;er une cat&#xe9;gorie"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="ButModifCat">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Modifier une cat&#xe9;gorie"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButModifCatActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="ButSupCat">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Supprimer une cat&#xe9;gorie"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButSupCatActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="ButCreerSsCat">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Cr&#xe9;er une sous-cat&#xe9;gorie"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButCreerSsCatActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="ButModifSsCat">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Modifier une sous-cat&#xe9;gorie"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButModifSsCatActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="ButSupSsCat">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Supprimer une sous-cat&#xe9;gorie"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Component class="javax.swing.JTextField" name="jTextField5">
                     </Component>
-                    <Component class="javax.swing.JButton" name="ButModifSsCat">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Modifier une sous-cat&#xe9;gorie"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButModifSsCatActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="ButSupSsCat">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Supprimer une sous-cat&#xe9;gorie"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="jTextField9">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1341,7 +1440,7 @@
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="583" max="32767" attributes="0"/>
+                      <EmptySpace pref="601" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1651,7 +1750,7 @@
                       <Component id="PanSearchClient" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" pref="360" max="-2" attributes="0"/>
-                      <EmptySpace pref="531" max="32767" attributes="0"/>
+                      <EmptySpace pref="549" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

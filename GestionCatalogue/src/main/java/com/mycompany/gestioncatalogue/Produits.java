@@ -137,8 +137,6 @@ public class Produits {
             LocalDate aujourdhui = LocalDate.now();
             return aujourdhui;
     }
-    
-    
 
    public static boolean creeProduit(int idSsCat, int idMarque, int idFournisseur, int idSolde, String nom, float prix, float prixSolde, int etatSolde, String description, String img, LocalDate date){
         
@@ -184,7 +182,27 @@ public class Produits {
         } catch (SQLException e) {
             System.out.println(e); 
         }
-        return  99999;
+        return  9999;
+}
+   
+   public static String recupIdProduit(String nom){
+       
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "select idProduit from produit where nom = '" + nom+ "'" ;
+        try{
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(sql);
+            ResultSet res = pst.executeQuery();
+            if(res.next()) {
+                int id = res.getInt("idProduit");
+                String idString = String.valueOf(id);
+                connection.close();
+                return idString;
+            }
+        } catch (SQLException e) {
+            System.out.println(e); 
+        }
+        return  "null";
 }
    
    public static Produits getProduit(String libelle) { // recuperation des donnees sql vers java
@@ -210,4 +228,47 @@ public class Produits {
    public static float PrixSolde(float prix, int solde){
        return (prix-prix*solde/100);
     }
+   
+   public static boolean modifProduit(int idProduit,int idSsCat, int idMarque, int idFournisseur, int idSolde, String nom, float prix, float prixSolde, int etatSolde, String description, String img, LocalDate date){
+        
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sqlPro = "update produit set idSsCategorie = ?,idMarque = ?,idFournisseur = ?,idSolde = ?,nom = ?,prix = ?,prixSolde = ?,etatSolde = ?,descriptionProd = ?,imgProd = ?,date = ? where idProduit="+ idProduit;
+        
+        try {
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pstProd = (PreparedStatement) connection.prepareStatement(sqlPro);
+                pstProd.setInt(1,idSsCat);
+                pstProd.setInt(2, idMarque);
+                pstProd.setInt(3, idFournisseur);
+                pstProd.setInt(4, idSolde);
+                pstProd.setString(5, nom);
+                pstProd.setFloat(6, prix);
+                pstProd.setFloat(7, prixSolde);
+                pstProd.setInt(8, etatSolde);
+                pstProd.setString(9, description);
+                pstProd.setString(10, img);
+                pstProd.setDate(11, Date.valueOf(date));
+                pstProd.execute();
+                connection.close();
+                return(true);                                
+            } catch (SQLException e) {
+                System.out.println(e);
+                return(false);
+        }
+   }  
+    public static boolean supprProduit(int idProduit){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sqlPro = "delete from produit where idProduit=?";
+        try{
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pstProd = (PreparedStatement) connection.prepareStatement(sqlPro);
+                pstProd.setInt(1, idProduit);
+                pstProd.execute();
+                return(true);
+        } catch (SQLException e) {
+                System.out.println(e);      
+        }
+        return(false);
+    }
 }
+    
