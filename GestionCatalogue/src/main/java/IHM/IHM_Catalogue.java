@@ -29,6 +29,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         affecterFournisseur();
         PanResult.setVisible(false);
         ButValider.setVisible(false);
+        Pan_addCat.setVisible(false);
     }  
     
     private void affecterCat(){
@@ -36,7 +37,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         for(int i=0;i<tabCat.length;i++){
             cb_Cat.addItem((String)tabCat[i]);
             cb_Categ.addItem((String)tabCat[i]);
+            cb_Categ1.addItem((String)tabCat[i]);
             cb_cat.addItem((String)tabCat[i]);
+            cb_Categ.addItem((String)tabCat[i]);
         }
     }       
     
@@ -135,33 +138,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         ButValider = new javax.swing.JButton();
         jPanAjouter = new javax.swing.JPanel();
         jButAdd = new javax.swing.JButton();
-        PanelCat = new javax.swing.JPanel();
-        lbl_cat = new javax.swing.JLabel();
-        PanSearchCat = new javax.swing.JPanel();
-        lbl_categ = new javax.swing.JLabel();
-        cb_Categ = new javax.swing.JComboBox<>();
-        lbl_ssCateg = new javax.swing.JLabel();
-        cb_ssCateg = new javax.swing.JComboBox<>();
-        PannButtonSearch1 = new javax.swing.JPanel();
-        Button_effacer1 = new javax.swing.JButton();
-        Button_Search1 = new javax.swing.JButton();
-        Button_effacer2 = new javax.swing.JButton();
-        Button_Search2 = new javax.swing.JButton();
-        PanResCat = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TableauCat = new javax.swing.JTable();
-        PanCatams = new javax.swing.JPanel();
-        lbl_categ1 = new javax.swing.JLabel();
-        lbl_ssCateg1 = new javax.swing.JLabel();
-        PannCreerModiSuppr = new javax.swing.JPanel();
-        ButCreerCat = new javax.swing.JButton();
-        ButModifCat = new javax.swing.JButton();
-        ButSupCat = new javax.swing.JButton();
-        ButCreerSsCat = new javax.swing.JButton();
-        ButModifSsCat = new javax.swing.JButton();
-        ButSupSsCat = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
         PanelPromo = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -198,6 +174,40 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        PanelCat = new javax.swing.JPanel();
+        lbl_cat = new javax.swing.JLabel();
+        PanSearchCat = new javax.swing.JPanel();
+        lbl_categ = new javax.swing.JLabel();
+        cb_Categ = new javax.swing.JComboBox<>();
+        lbl_ssCateg = new javax.swing.JLabel();
+        cb_ssCateg = new javax.swing.JComboBox<>();
+        PannButtonSearch1 = new javax.swing.JPanel();
+        Button_effacer1 = new javax.swing.JButton();
+        Button_Search1 = new javax.swing.JButton();
+        Button_effacer2 = new javax.swing.JButton();
+        Button_Search2 = new javax.swing.JButton();
+        ButModifCat = new javax.swing.JButton();
+        ButSupCat = new javax.swing.JButton();
+        ButModifSsCat = new javax.swing.JButton();
+        ButSupSsCat = new javax.swing.JButton();
+        bvalide2 = new javax.swing.JButton();
+        bvalide3 = new javax.swing.JButton();
+        Pan_addCat = new javax.swing.JPanel();
+        lbl_categ1 = new javax.swing.JLabel();
+        lbl_ssCateg1 = new javax.swing.JLabel();
+        tfsscat = new javax.swing.JTextField();
+        tfcat = new javax.swing.JTextField();
+        lblimage = new javax.swing.JLabel();
+        tfimage = new javax.swing.JTextField();
+        bvalideCat = new javax.swing.JButton();
+        bvalideSsCat = new javax.swing.JButton();
+        cb_Categ1 = new javax.swing.JComboBox<>();
+        PannCreerModiSuppr = new javax.swing.JPanel();
+        ButCreerCat = new javax.swing.JButton();
+        ButCreerSsCat = new javax.swing.JButton();
+        PanResCat = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableauCat = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMGestCat = new javax.swing.JMenuItem();
@@ -218,6 +228,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         tabPC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tabPC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabPC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabPCMouseClicked(evt);
+            }
+        });
 
         lbl_Search.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
         lbl_Search.setText("Ajouter ou Rechercher un Produit");
@@ -473,7 +488,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(ButSuppr)
                 .addGap(59, 59, 59)
                 .addComponent(butAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         Pan_ModifSupprLayout.setVerticalGroup(
             Pan_ModifSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -590,14 +605,14 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                                 .addGap(18, 18, 18)
                                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanResultLayout.createSequentialGroup()
-                                        .addComponent(tf_prix, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tf_prix, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lbl_promo)
-                                        .addGap(33, 33, 33)
+                                        .addGap(18, 18, 18)
                                         .addComponent(Radio_oui)
                                         .addGap(18, 18, 18)
                                         .addComponent(Radio_non)
-                                        .addGap(144, 144, 144)
+                                        .addGap(120, 120, 120)
                                         .addComponent(lblsolde)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cb_Solde, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -631,7 +646,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                         .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanResultLayout.createSequentialGroup()
                                 .addComponent(lbl_ID)
-                                .addGap(12, 12, 12)
+                                .addGap(11, 11, 11)
                                 .addComponent(tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -659,7 +674,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_ImageProd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_ImageProd, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanResultLayout.createSequentialGroup()
@@ -802,305 +817,10 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(PanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(516, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Produits", PanelProduits);
-
-        lbl_cat.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
-        lbl_cat.setText("Rechercher une Catégorie");
-
-        PanSearchCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        lbl_categ.setText("Catégorie :");
-
-        cb_Categ.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_CategItemStateChanged(evt);
-            }
-        });
-        cb_Categ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_CategActionPerformed(evt);
-            }
-        });
-
-        lbl_ssCateg.setText("Sous-Catégorie :");
-
-        cb_ssCateg.setToolTipText("");
-
-        Button_effacer1.setText("Effacer");
-
-        Button_Search1.setText("Rechercher");
-        Button_Search1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Button_Search1MouseClicked(evt);
-            }
-        });
-        Button_Search1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Search1ActionPerformed(evt);
-            }
-        });
-
-        Button_effacer2.setText("Effacer");
-
-        Button_Search2.setText("Rechercher");
-        Button_Search2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Search2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PannButtonSearch1Layout = new javax.swing.GroupLayout(PannButtonSearch1);
-        PannButtonSearch1.setLayout(PannButtonSearch1Layout);
-        PannButtonSearch1Layout.setHorizontalGroup(
-            PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannButtonSearch1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Button_Search2)
-                    .addComponent(Button_Search1))
-                .addGap(44, 44, 44)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_effacer1)
-                    .addComponent(Button_effacer2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-        PannButtonSearch1Layout.setVerticalGroup(
-            PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannButtonSearch1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button_effacer1)
-                    .addComponent(Button_Search1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button_Search2)
-                    .addComponent(Button_effacer2))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout PanSearchCatLayout = new javax.swing.GroupLayout(PanSearchCat);
-        PanSearchCat.setLayout(PanSearchCatLayout);
-        PanSearchCatLayout.setHorizontalGroup(
-            PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanSearchCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_ssCateg)
-                    .addComponent(lbl_categ))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_Categ, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_ssCateg, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PannButtonSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
-        PanSearchCatLayout.setVerticalGroup(
-            PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanSearchCatLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_categ)
-                    .addComponent(cb_Categ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_ssCateg)
-                    .addComponent(cb_ssCateg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanSearchCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PannButtonSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        PanResCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        TableauCat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "idCategorie", "idSousCategorie", "idProduit", "quantite"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        TableauCat.setEnabled(false);
-        jScrollPane1.setViewportView(TableauCat);
-
-        lbl_categ1.setText("Catégorie :");
-
-        lbl_ssCateg1.setText("Sous-Catégorie :");
-
-        ButCreerCat.setText("Créer une catégorie");
-
-        ButModifCat.setText("Modifier une catégorie");
-        ButModifCat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButModifCatActionPerformed(evt);
-            }
-        });
-
-        ButSupCat.setText("Supprimer une catégorie");
-        ButSupCat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButSupCatActionPerformed(evt);
-            }
-        });
-
-        ButCreerSsCat.setText("Créer une sous-catégorie");
-        ButCreerSsCat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButCreerSsCatActionPerformed(evt);
-            }
-        });
-
-        ButModifSsCat.setText("Modifier une sous-catégorie");
-        ButModifSsCat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButModifSsCatActionPerformed(evt);
-            }
-        });
-
-        ButSupSsCat.setText("Supprimer une sous-catégorie");
-
-        javax.swing.GroupLayout PannCreerModiSupprLayout = new javax.swing.GroupLayout(PannCreerModiSuppr);
-        PannCreerModiSuppr.setLayout(PannCreerModiSupprLayout);
-        PannCreerModiSupprLayout.setHorizontalGroup(
-            PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
-                .addGroup(PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(ButCreerSsCat)
-                        .addGap(33, 33, 33)
-                        .addComponent(ButModifSsCat)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButSupSsCat))
-                    .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(ButCreerCat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButModifCat)
-                        .addGap(49, 49, 49)
-                        .addComponent(ButSupCat)
-                        .addGap(13, 13, 13)))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        PannCreerModiSupprLayout.setVerticalGroup(
-            PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PannCreerModiSupprLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButCreerCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
-                        .addGroup(PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButModifCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ButSupCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButCreerSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(ButModifSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButSupSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(8, 8, 8))
-        );
-
-        javax.swing.GroupLayout PanCatamsLayout = new javax.swing.GroupLayout(PanCatams);
-        PanCatams.setLayout(PanCatamsLayout);
-        PanCatamsLayout.setHorizontalGroup(
-            PanCatamsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanCatamsLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(PanCatamsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_ssCateg1)
-                    .addComponent(lbl_categ1))
-                .addGap(29, 29, 29)
-                .addGroup(PanCatamsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField9))
-                .addGap(664, 664, 664))
-            .addGroup(PanCatamsLayout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanCatamsLayout.setVerticalGroup(
-            PanCatamsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanCatamsLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(PanCatamsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_categ1)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(PanCatamsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_ssCateg1))
-                .addGap(18, 18, 18)
-                .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout PanResCatLayout = new javax.swing.GroupLayout(PanResCat);
-        PanResCat.setLayout(PanResCatLayout);
-        PanResCatLayout.setHorizontalGroup(
-            PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanResCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
-                    .addComponent(PanCatams, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        PanResCatLayout.setVerticalGroup(
-            PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanResCatLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PanCatams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout PanelCatLayout = new javax.swing.GroupLayout(PanelCat);
-        PanelCat.setLayout(PanelCatLayout);
-        PanelCatLayout.setHorizontalGroup(
-            PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanSearchCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelCatLayout.createSequentialGroup()
-                        .addComponent(lbl_cat)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(PanResCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        PanelCatLayout.setVerticalGroup(
-            PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_cat, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanSearchCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(PanResCat, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(401, Short.MAX_VALUE))
-        );
-
-        tabPC.addTab("Catégories", PanelCat);
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -1176,9 +896,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1243,7 +963,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1268,11 +988,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addGap(16, 16, 16)
                 .addGroup(PanelPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelPromoLayout.createSequentialGroup()
                         .addComponent(lbl_SearchPromo)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelPromoLayout.setVerticalGroup(
@@ -1281,11 +1001,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(lbl_SearchPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(601, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(624, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Promotions", PanelPromo);
@@ -1331,7 +1051,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(jButton7)
@@ -1372,7 +1092,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
         );
@@ -1403,17 +1123,17 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nom", "Prenom", "Telephone", "Adresse", "E-mail", "Commande", "Date", "Type", "Montant"
+                "Nom", "Prenom", "Telephone", "Adresse", "E-mail"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1432,8 +1152,8 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout PanelClientsLayout = new javax.swing.GroupLayout(PanelClients);
@@ -1458,11 +1178,389 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(549, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Clients", PanelClients);
+
+        lbl_cat.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
+        lbl_cat.setText("Rechercher une Catégorie");
+
+        PanSearchCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lbl_categ.setText("Catégorie :");
+
+        cb_Categ.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_CategItemStateChanged(evt);
+            }
+        });
+        cb_Categ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_CategActionPerformed(evt);
+            }
+        });
+
+        lbl_ssCateg.setText("Sous-Catégorie :");
+
+        cb_ssCateg.setToolTipText("");
+
+        Button_effacer1.setText("Effacer");
+
+        Button_Search1.setText("Rechercher");
+        Button_Search1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_Search1MouseClicked(evt);
+            }
+        });
+        Button_Search1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Search1ActionPerformed(evt);
+            }
+        });
+
+        Button_effacer2.setText("Effacer");
+
+        Button_Search2.setText("Rechercher");
+        Button_Search2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Search2ActionPerformed(evt);
+            }
+        });
+
+        ButModifCat.setText("Modifier une catégorie");
+        ButModifCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButModifCatMouseClicked(evt);
+            }
+        });
+        ButModifCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButModifCatActionPerformed(evt);
+            }
+        });
+
+        ButSupCat.setText("Supprimer une catégorie");
+        ButSupCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButSupCatActionPerformed(evt);
+            }
+        });
+
+        ButModifSsCat.setText("Modifier une sous-catégorie");
+        ButModifSsCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButModifSsCatActionPerformed(evt);
+            }
+        });
+
+        ButSupSsCat.setText("Supprimer une sous-catégorie");
+
+        bvalide2.setText("Valider");
+        bvalide2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalide2MouseClicked(evt);
+            }
+        });
+
+        bvalide3.setText("Valider");
+
+        javax.swing.GroupLayout PannButtonSearch1Layout = new javax.swing.GroupLayout(PannButtonSearch1);
+        PannButtonSearch1.setLayout(PannButtonSearch1Layout);
+        PannButtonSearch1Layout.setHorizontalGroup(
+            PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannButtonSearch1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButModifSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButModifCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButSupSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButSupCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_Search1)
+                    .addComponent(Button_Search2))
+                .addGap(18, 18, 18)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_effacer1)
+                    .addComponent(Button_effacer2))
+                .addGap(18, 18, 18)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bvalide2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bvalide3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        PannButtonSearch1Layout.setVerticalGroup(
+            PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannButtonSearch1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButModifCat)
+                    .addComponent(ButSupCat)
+                    .addComponent(Button_Search1)
+                    .addComponent(Button_effacer1)
+                    .addComponent(bvalide2))
+                .addGap(18, 18, 18)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButModifSsCat)
+                    .addComponent(ButSupSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Button_Search2)
+                    .addComponent(Button_effacer2)
+                    .addComponent(bvalide3))
+                .addGap(23, 23, 23))
+        );
+
+        lbl_categ1.setText("Catégorie :");
+
+        lbl_ssCateg1.setText("Sous-Catégorie :");
+
+        lblimage.setText("Image :");
+
+        bvalideCat.setText("Valider");
+        bvalideCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalideCatMouseClicked(evt);
+            }
+        });
+
+        bvalideSsCat.setText("Valider");
+        bvalideSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalideSsCatMouseClicked(evt);
+            }
+        });
+
+        cb_Categ1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_Categ1ItemStateChanged(evt);
+            }
+        });
+        cb_Categ1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_Categ1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Pan_addCatLayout = new javax.swing.GroupLayout(Pan_addCat);
+        Pan_addCat.setLayout(Pan_addCatLayout);
+        Pan_addCatLayout.setHorizontalGroup(
+            Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Pan_addCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pan_addCatLayout.createSequentialGroup()
+                        .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfimage)
+                        .addContainerGap())
+                    .addGroup(Pan_addCatLayout.createSequentialGroup()
+                        .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Pan_addCatLayout.createSequentialGroup()
+                                .addComponent(lbl_categ1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tfcat, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Pan_addCatLayout.createSequentialGroup()
+                                .addComponent(lbl_ssCateg1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfsscat, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)
+                        .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bvalideCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pan_addCatLayout.createSequentialGroup()
+                                .addComponent(cb_Categ1, 0, 172, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bvalideSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))))
+        );
+        Pan_addCatLayout.setVerticalGroup(
+            Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Pan_addCatLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_categ1)
+                    .addComponent(tfcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bvalideCat))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ssCateg1)
+                    .addComponent(tfsscat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bvalideSsCat)
+                    .addComponent(cb_Categ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblimage)
+                    .addComponent(tfimage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        ButCreerCat.setText("Créer une catégorie");
+        ButCreerCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButCreerCatMouseClicked(evt);
+            }
+        });
+
+        ButCreerSsCat.setText("Créer une sous-catégorie");
+        ButCreerSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButCreerSsCatMouseClicked(evt);
+            }
+        });
+        ButCreerSsCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButCreerSsCatActionPerformed(evt);
+            }
+        });
+        ButCreerSsCat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ButCreerSsCatKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PannCreerModiSupprLayout = new javax.swing.GroupLayout(PannCreerModiSuppr);
+        PannCreerModiSuppr.setLayout(PannCreerModiSupprLayout);
+        PannCreerModiSupprLayout.setHorizontalGroup(
+            PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButCreerCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButCreerSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PannCreerModiSupprLayout.setVerticalGroup(
+            PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(ButCreerCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ButCreerSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout PanSearchCatLayout = new javax.swing.GroupLayout(PanSearchCat);
+        PanSearchCat.setLayout(PanSearchCatLayout);
+        PanSearchCatLayout.setHorizontalGroup(
+            PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanSearchCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanSearchCatLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_ssCateg)
+                            .addComponent(lbl_categ))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_Categ, 0, 172, Short.MAX_VALUE)
+                            .addComponent(cb_ssCateg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PannButtonSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(PanSearchCatLayout.createSequentialGroup()
+                        .addComponent(Pan_addCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
+        );
+        PanSearchCatLayout.setVerticalGroup(
+            PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanSearchCatLayout.createSequentialGroup()
+                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanSearchCatLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_Categ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_categ))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_ssCateg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_ssCateg)))
+                    .addGroup(PanSearchCatLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PannButtonSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Pan_addCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        PanResCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        TableauCat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "idCategorie", "idSousCategorie", "idProduit", "quantite"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        TableauCat.setEnabled(false);
+        jScrollPane1.setViewportView(TableauCat);
+
+        javax.swing.GroupLayout PanResCatLayout = new javax.swing.GroupLayout(PanResCat);
+        PanResCat.setLayout(PanResCatLayout);
+        PanResCatLayout.setHorizontalGroup(
+            PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanResCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        PanResCatLayout.setVerticalGroup(
+            PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanResCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout PanelCatLayout = new javax.swing.GroupLayout(PanelCat);
+        PanelCat.setLayout(PanelCatLayout);
+        PanelCatLayout.setHorizontalGroup(
+            PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCatLayout.createSequentialGroup()
+                .addGroup(PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCatLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PanResCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(PanelCatLayout.createSequentialGroup()
+                                .addComponent(lbl_cat)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(PanelCatLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(PanSearchCat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        PanelCatLayout.setVerticalGroup(
+            PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_cat, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanSearchCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanResCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(539, Short.MAX_VALUE))
+        );
+
+        tabPC.addTab("Catégories", PanelCat);
 
         getContentPane().add(tabPC, java.awt.BorderLayout.PAGE_START);
 
@@ -1474,6 +1572,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
 
         jMGestCat.setText("Gestion Catégories");
+        jMGestCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMGestCatMouseClicked(evt);
+            }
+        });
         jMGestCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGestCatActionPerformed(evt);
@@ -1974,7 +2077,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             
             if(Produits.modifProduit(idProduit,idSsCat,idMarque,idFournisseur,idSolde,nom,prix,prixSolde,etatSolde,description,img,date) == true){
                 if(Stocks.modifStock(idProduit,quantite,seuilMin,seuilMax) == true){
-                    JOptionPane.showMessageDialog(this, "Le produit a été modifié de la base de données.");
+                    JOptionPane.showMessageDialog(this, "Le produit a été modifié dans la base de données.");
                     PanResult.setVisible(false);
                     for (Component c : PanSearch.getComponents()){
                     c.setEnabled(true);
@@ -1992,12 +2095,82 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_ButSupCatActionPerformed
 
     private void Button_Search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_Search1MouseClicked
-        
-        
-        
-        
-        
+  
     }//GEN-LAST:event_Button_Search1MouseClicked
+
+    private void jMGestCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMGestCatMouseClicked
+
+    }//GEN-LAST:event_jMGestCatMouseClicked
+
+    private void ButModifCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButModifCatMouseClicked
+        Pan_addCat.setVisible(true);
+    }//GEN-LAST:event_ButModifCatMouseClicked
+
+    private void bvalide2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalide2MouseClicked
+        int idCat = CategorieProduit.getIdCategorie(cb_Categ.getSelectedItem().toString());
+        if(CategorieProduit.modifCat(idCat,tfcat.getText(),tfimage.getText()) == true){
+            JOptionPane.showMessageDialog(this, "La catégorie a été modifiée dans la base de données.");
+        }
+        else{
+                JOptionPane.showMessageDialog(this, "La catégorie n'a pas été modifié !");
+            }
+        
+    }//GEN-LAST:event_bvalide2MouseClicked
+
+    private void ButCreerCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButCreerCatMouseClicked
+         Pan_addCat.setVisible(true);
+         tfsscat.setEditable(false);
+         cb_Categ1.enable(false);
+         bvalideSsCat.setVisible(false);
+    }//GEN-LAST:event_ButCreerCatMouseClicked
+
+    private void ButCreerSsCatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButCreerSsCatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButCreerSsCatKeyPressed
+
+    private void ButCreerSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButCreerSsCatMouseClicked
+         Pan_addCat.setVisible(true);
+    }//GEN-LAST:event_ButCreerSsCatMouseClicked
+
+    private void bvalideCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideCatMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter cette catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
+        if (reply == JOptionPane.YES_OPTION){    
+            if(CategorieProduit.addCat(tfcat.getText(),tfimage.getText()) == true){
+            JOptionPane.showMessageDialog(this, "La catégorie a été ajoutée dans la base de données.");
+            cb_Categ.removeAllItems();
+            affecterCat(); 
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La catégorie n'a pas été ajoutée !");
+            }
+        }
+    }//GEN-LAST:event_bvalideCatMouseClicked
+
+    private void bvalideSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideSsCatMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter cette catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
+        if (reply == JOptionPane.YES_OPTION){ 
+            int idcat = Integer.valueOf(cb_Categ1.getSelectedItem().toString());
+            if(CategorieProduit.addSsCat(idcat,tfsscat.getText(),tfimage.getText()) == true){
+            JOptionPane.showMessageDialog(this, "La catégorie a été ajoutée dans la base de données.");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La sous-catégorie n'a pas été ajoutée !");
+            }
+        }
+    }//GEN-LAST:event_bvalideSsCatMouseClicked
+
+    private void cb_Categ1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_Categ1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_Categ1ItemStateChanged
+
+    private void cb_Categ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_Categ1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_Categ1ActionPerformed
+
+    private void tabPCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabPCMouseClicked
+        cb_Cat.removeAllItems();
+        affecterCat();
+    }//GEN-LAST:event_tabPCMouseClicked
     /**
      * @param args the command line arguments
      */
@@ -2028,13 +2201,13 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JButton Button_effacer2;
     private javax.swing.JLabel IDFournisseur;
     private javax.swing.JPanel PanAdd;
-    private javax.swing.JPanel PanCatams;
     private javax.swing.JPanel PanResCat;
     private javax.swing.JPanel PanResult;
     private javax.swing.JPanel PanSearch;
     private javax.swing.JPanel PanSearchCat;
     private javax.swing.JPanel PanSearchClient;
     private javax.swing.JPanel Pan_ModifSuppr;
+    private javax.swing.JPanel Pan_addCat;
     private javax.swing.JPanel PanelCat;
     private javax.swing.JPanel PanelClients;
     private javax.swing.JPanel PanelProduits;
@@ -2047,8 +2220,13 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JScrollPane Scroll_description;
     private javax.swing.JTable TableauCat;
     private javax.swing.JButton butAnnuler;
+    private javax.swing.JButton bvalide2;
+    private javax.swing.JButton bvalide3;
+    private javax.swing.JButton bvalideCat;
+    private javax.swing.JButton bvalideSsCat;
     private javax.swing.JComboBox<String> cb_Cat;
     private javax.swing.JComboBox<String> cb_Categ;
+    private javax.swing.JComboBox<String> cb_Categ1;
     private javax.swing.JComboBox<String> cb_Solde;
     private javax.swing.JComboBox<String> cb_cat;
     private javax.swing.JComboBox<String> cb_fournisseur;
@@ -2100,11 +2278,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbl_Cat;
     private javax.swing.JLabel lbl_Cate;
     private javax.swing.JLabel lbl_ID;
@@ -2129,6 +2305,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JLabel lbl_ssCat1;
     private javax.swing.JLabel lbl_ssCateg;
     private javax.swing.JLabel lbl_ssCateg1;
+    private javax.swing.JLabel lblimage;
     private javax.swing.JLabel lblsolde;
     private javax.swing.JLabel percent;
     private javax.swing.JTextArea ta_description;
@@ -2142,5 +2319,8 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JTextField tf_prixRed;
     private javax.swing.JTextField tf_prod;
     private javax.swing.JTextField tf_qte;
+    private javax.swing.JTextField tfcat;
+    private javax.swing.JTextField tfimage;
+    private javax.swing.JTextField tfsscat;
     // End of variables declaration//GEN-END:variables
 }

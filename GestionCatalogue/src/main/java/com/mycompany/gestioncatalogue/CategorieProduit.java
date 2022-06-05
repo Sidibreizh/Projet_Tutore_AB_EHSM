@@ -121,4 +121,58 @@ public class CategorieProduit{
         }
         return 0;
     }
+    
+    public static boolean addCat(String nomCategorie, String imgCat){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "insert into categorie_produit(nomCategorie,imgCat) values (?,?)";
+        try {
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pst = (PreparedStatement) connection.prepareStatement(sql);
+                pst.setString(1,nomCategorie);
+                pst.setString(2, imgCat);
+                pst.execute();
+                connection.close();
+                return(true);                                
+            } catch (SQLException e) {
+                System.out.println(e);
+                return(false);
+        }    
+    }
+    
+    public static boolean addSsCat(int idcat,String nom,String image){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "insert into souscategorie_produit(idCategorie,nomSsCategorie,imgSsCat) values (?,?,?)";
+        try {
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pst = (PreparedStatement) connection.prepareStatement(sql);
+                pst.setInt(1,idcat);
+                pst.setString(2,nom);
+                pst.setString(3, image);
+                pst.execute();
+                connection.close();
+                return(true);                                
+            } catch (SQLException e) {
+                System.out.println(e);
+                return(false);
+        }    
+    }
+    
+    public static boolean modifCat(int idCat, String nomCategorie, String imgCat){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "update categorie_produit set nomCategorie = ?,imgCat = ? where idCategorie='"+ idCat + "'";
+        
+        try {
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pstCat = (PreparedStatement) connection.prepareStatement(sql);
+                pstCat.setString(1,nomCategorie);
+                pstCat.setString(2,imgCat);
+                pstCat.execute();
+                connection.close();
+                return(true);                                
+            } catch (SQLException e) {
+                System.out.println(e);
+                return(false);
+        }
+    }
+        
 }
