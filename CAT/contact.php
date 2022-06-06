@@ -1,3 +1,4 @@
+<?php require_once ('inc/init.inc.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -110,7 +111,7 @@
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="contact-form section-bg" style="background-image: url(assets/images/contact-1-720x480.jpg)">
                         <form id="contact" action="" method="post">
-                            <div class="row">
+                            <div62666 class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Votre nom" required="">
@@ -136,7 +137,7 @@
                                         <button type="submit" id="form-submit" class="main-button">Send Message</button>
                                     </fieldset>
                                 </div>
-                            </div>
+                            </div62666>
                         </form>
                     </div>
                 </div>

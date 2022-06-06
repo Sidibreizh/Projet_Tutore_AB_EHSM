@@ -1,44 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-
-    <title>CAT - Croquettes à temps</title>
-
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
-
-    </head>
-
-  <body>
-
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-
-
     <!-- ***** Header Area Start ***** -->
-    <?php include('header.php'); ?>
+    <?php include('inc/header.php'); ?>
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
@@ -52,7 +14,7 @@
                 <h6>Vente de nourriture et accessoires pour chats</h6>
                 <h2>Croquettes à <em>temps</em></h2>
                 <div class="main-button">
-                    <a href="#">Qui sommes-nous ?</a>
+                    <a href="about.php">Qui sommes-nous ?</a>
                 </div>
             </div>
         </div>
@@ -75,7 +37,7 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="assets/images/Royal_canin_neutered_satiety_balance_7.jpg" alt="">
+                            <img src="assets/images/croquettes_Royal_canin_neutered_satiety_balance_7.jpg" alt="">
                         </div>
                         <div class="down-content">
                             <span>
@@ -95,7 +57,7 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="assets/images/Ct_rapunzel_darkgray.jpg" alt="">
+                            <img src="assets/images/arbre_a_chat_rapunzel_darkgray.jpg" alt="">
                         </div>
                         <div class="down-content">
                             <span>
@@ -115,7 +77,7 @@
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="assets/images/tigerino_canada_babypowder_trialpack_6kg_1000x1000_prixmini.jpg" alt="">
+                            <img src="assets/images/litiere_tigerino_canada_babypowder_prixmini.jpg" alt="">
                         </div>
                         <div class="down-content">
                             <span>
@@ -137,7 +99,7 @@
             <br>
 
             <div class="main-button text-center">
-                <a href="#">Aller à la boutique</a>
+                <a href="products.php">Aller à la boutique</a>
             </div>
         </div>
     </section>
@@ -151,9 +113,9 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
                         <h2>Envoyez-nous un <em>message</em></h2>
-                        <p>Vous avez une question sur un produit ? A propos de votre commande ? Ou vous souhaitez simplement nous dire que votre chat est heureux ?<br>Nous sommes à votre disposition.</p>
+                        <p>Vous avez une question sur un produit ? A propos de votre commande ?<br> Vous souhaitez simplement nous dire que votre chat est heureux ?<br>Nous sommes à votre disposition.</p>
                         <div class="main-button">
-                            <a href="#">Contactez-nous</a>
+                            <a href="mailto:alix.bernardo@etu.univ-lyon1.fr">Contactez-nous</a>
                         </div>
                     </div>
                 </div>
@@ -229,25 +191,7 @@
     <!-- ***** Testimonials Item End ***** -->
 
     <!-- ***** Footer Start ***** -->
-    <?php include('footer.php'); ?>
-
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/mixitup.js"></script>
-    <script src="assets/js/accordions.js"></script>
-
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <?php include('inc/footer.php'); ?>
 
   </body>
 </html>

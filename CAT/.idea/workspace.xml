@@ -7,15 +7,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/stripe/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
-      <path value="$PROJECT_DIR$/../../../Alix/Programmes/xampp/php/PEAR" />
+      <path value="$USER_HOME$/Alix/Programmes/xampp/php/PEAR" />
     </include_path>
   </component>
   <component name="ProjectId" id="28wLZF1pEPHJPnZaPL3Ue87mXqI" />
@@ -23,15 +24,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\a_l_i\OneDrive\Documents\CAT" />
+      <recent name="C:\Users\a_l_i\OneDrive\Documents\CAT\inc" />
+      <recent name="D:\Programmes\PhpstormProjects\CAT\inc" />
       <recent name="D:\Programmes\PhpstormProjects\CAT\" />
     </key>
   </component>
@@ -46,7 +49,28 @@
       <workItem from="1652122777577" duration="2121000" />
       <workItem from="1652171359856" duration="717000" />
       <workItem from="1652197745686" duration="4023000" />
-      <workItem from="1652250891440" duration="20215000" />
+      <workItem from="1652250891440" duration="25064000" />
+      <workItem from="1652432706556" duration="1701000" />
+      <workItem from="1652603015839" duration="1875000" />
+      <workItem from="1652711442971" duration="820000" />
+      <workItem from="1652767450380" duration="5494000" />
+      <workItem from="1652792935398" duration="594000" />
+      <workItem from="1653034425309" duration="10667000" />
+      <workItem from="1653291347121" duration="7143000" />
+      <workItem from="1653300342174" duration="134000" />
+      <workItem from="1653300495474" duration="142000" />
+      <workItem from="1653300972443" duration="10784000" />
+      <workItem from="1653380489736" duration="23926000" />
+      <workItem from="1653496154251" duration="9543000" />
+      <workItem from="1653899957794" duration="1697000" />
+      <workItem from="1654068304588" duration="24000" />
+      <workItem from="1654068707422" duration="5815000" />
+      <workItem from="1654086184921" duration="1394000" />
+      <workItem from="1654088651003" duration="944000" />
+      <workItem from="1654091192842" duration="134000" />
+      <workItem from="1654421464277" duration="20104000" />
+      <workItem from="1654445892547" duration="4009000" />
+      <workItem from="1654498104432" duration="17359000" />
     </task>
     <servers />
   </component>

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/../../../Alix/Programmes/xampp/php/PEAR" />
+      <path value="$USER_HOME$/Alix/Programmes/xampp/php/PEAR" />
     </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
 </project>
