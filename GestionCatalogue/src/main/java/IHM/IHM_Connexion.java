@@ -4,6 +4,9 @@
  */
 package IHM;
 
+import com.mycompany.gestioncatalogue.Connexion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sidi Breizh
@@ -27,38 +30,25 @@ public class IHM_Connexion extends javax.swing.JFrame {
     private void initComponents() {
 
         PannUser = new javax.swing.JPanel();
-        lbl_User = new javax.swing.JLabel();
-        lbl_Pwd = new javax.swing.JLabel();
-        PwdField = new javax.swing.JPasswordField();
-        ImageUser_lbl = new javax.swing.JLabel();
-        Tf_User = new javax.swing.JTextField();
         PannButton = new javax.swing.JPanel();
         Butt_connexion = new javax.swing.JButton();
         Butt_pwd = new javax.swing.JButton();
+        PanUsPas = new javax.swing.JPanel();
+        lbl_User = new javax.swing.JLabel();
+        tf_User = new javax.swing.JTextField();
+        lbl_Pwd = new javax.swing.JLabel();
+        tf_pwd = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lbl_User.setLabelFor(lbl_User);
-        lbl_User.setText("Utilisateur :");
-
-        lbl_Pwd.setText("Mot de passe :");
-
-        PwdField.setText("jPasswordField1");
-        PwdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PwdFieldActionPerformed(evt);
-            }
-        });
-
-        ImageUser_lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login.png"))); // NOI18N
-
-        Tf_User.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Tf_UserActionPerformed(evt);
-            }
-        });
+        setTitle("Croquettes A Temps Software (CATS)");
 
         Butt_connexion.setText("Connexion");
+        Butt_connexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Butt_connexionMouseClicked(evt);
+            }
+        });
         Butt_connexion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Butt_connexionActionPerformed(evt);
@@ -66,6 +56,11 @@ public class IHM_Connexion extends javax.swing.JFrame {
         });
 
         Butt_pwd.setText("Mot de passe oublié ?");
+        Butt_pwd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Butt_pwdMouseClicked(evt);
+            }
+        });
         Butt_pwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Butt_pwdActionPerformed(evt);
@@ -77,63 +72,102 @@ public class IHM_Connexion extends javax.swing.JFrame {
         PannButtonLayout.setHorizontalGroup(
             PannButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PannButtonLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(Butt_connexion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Butt_pwd)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PannButtonLayout.setVerticalGroup(
             PannButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PannButtonLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(PannButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Butt_connexion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Butt_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addGap(21, 21, 21))
         );
+
+        lbl_User.setLabelFor(lbl_User);
+        lbl_User.setText("Utilisateur :");
+
+        tf_User.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_UserActionPerformed(evt);
+            }
+        });
+
+        lbl_Pwd.setText("Mot de passe :");
+
+        tf_pwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_pwdActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanUsPasLayout = new javax.swing.GroupLayout(PanUsPas);
+        PanUsPas.setLayout(PanUsPasLayout);
+        PanUsPasLayout.setHorizontalGroup(
+            PanUsPasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanUsPasLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(PanUsPasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanUsPasLayout.createSequentialGroup()
+                        .addComponent(lbl_Pwd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_pwd))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanUsPasLayout.createSequentialGroup()
+                        .addComponent(lbl_User)
+                        .addGap(24, 24, 24)
+                        .addComponent(tf_User, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
+        );
+        PanUsPasLayout.setVerticalGroup(
+            PanUsPasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanUsPasLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(PanUsPasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_User)
+                    .addComponent(tf_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanUsPasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Pwd)
+                    .addComponent(tf_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        lbl_User.getAccessibleContext().setAccessibleParent(lbl_User);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\elyes\\OneDrive\\Documents\\GitHub\\Projet_Tutore_AB_EHSM\\GestionCatalogue\\src\\IMG\\Icon.jpg")); // NOI18N
+        jLabel2.setToolTipText("");
 
         javax.swing.GroupLayout PannUserLayout = new javax.swing.GroupLayout(PannUser);
         PannUser.setLayout(PannUserLayout);
         PannUserLayout.setHorizontalGroup(
             PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PannUserLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PannButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PannUserLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
                 .addGroup(PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_Pwd)
-                    .addComponent(lbl_User))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Tf_User)
-                    .addComponent(PwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(PannUserLayout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(ImageUser_lbl))
+                    .addGroup(PannUserLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PannButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PanUsPas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PannUserLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel2)))
+                .addGap(20, 20, 20))
         );
         PannUserLayout.setVerticalGroup(
             PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PannUserLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(ImageUser_lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_User)
-                    .addComponent(Tf_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(PannUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_Pwd)
-                    .addComponent(PwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PannUserLayout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(31, 31, 31)
+                .addComponent(PanUsPas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PannButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(32, 32, 32))
         );
-
-        lbl_User.getAccessibleContext().setAccessibleParent(lbl_User);
-        ImageUser_lbl.getAccessibleContext().setAccessibleName("Label_Image_User");
-        ImageUser_lbl.getAccessibleContext().setAccessibleParent(ImageUser_lbl);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,19 +179,17 @@ public class IHM_Connexion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PannUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PannUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PwdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PwdFieldActionPerformed
+    private void tf_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_UserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PwdFieldActionPerformed
-
-    private void Tf_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tf_UserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tf_UserActionPerformed
+    }//GEN-LAST:event_tf_UserActionPerformed
 
     private void Butt_connexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Butt_connexionActionPerformed
         // TODO add your handling code here:
@@ -166,6 +198,36 @@ public class IHM_Connexion extends javax.swing.JFrame {
     private void Butt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Butt_pwdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Butt_pwdActionPerformed
+
+    private void Butt_connexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Butt_connexionMouseClicked
+        if(Connexion.checkConnexion(tf_User.getText(),tf_pwd.getText()) == true){
+            if(Connexion.roleConnexion(tf_User.getText()) == true){
+                    IHM_Catalogue FenCat = new IHM_Catalogue();
+                    FenCat.setVisible(true);
+                    this.dispose();   
+                }
+            else{
+                JOptionPane.showMessageDialog(this, "Vous n'êtes pas administrateur.");
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(this, "L'utilisateur ou le mot de passe est incorrect.");
+        }
+    }//GEN-LAST:event_Butt_connexionMouseClicked
+
+    private void Butt_pwdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Butt_pwdMouseClicked
+        if(!tf_User.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Un mail a été envoyé dans votre boîte aux lettres.");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Saisissez votre nom d'utilisateur s'il vous plaît.");
+        }
+    }//GEN-LAST:event_Butt_pwdMouseClicked
+
+    private void tf_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_pwdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_pwdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +258,7 @@ public class IHM_Connexion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new IHM_Connexion().setVisible(true);
             }
@@ -205,12 +268,13 @@ public class IHM_Connexion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Butt_connexion;
     private javax.swing.JButton Butt_pwd;
-    private javax.swing.JLabel ImageUser_lbl;
+    private javax.swing.JPanel PanUsPas;
     private javax.swing.JPanel PannButton;
     private javax.swing.JPanel PannUser;
-    private javax.swing.JPasswordField PwdField;
-    private javax.swing.JTextField Tf_User;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbl_Pwd;
     private javax.swing.JLabel lbl_User;
+    private javax.swing.JTextField tf_User;
+    private javax.swing.JTextField tf_pwd;
     // End of variables declaration//GEN-END:variables
 }

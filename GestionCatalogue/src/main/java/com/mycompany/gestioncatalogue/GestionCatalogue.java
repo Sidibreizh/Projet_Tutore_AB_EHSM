@@ -1,8 +1,6 @@
 package com.mycompany.gestioncatalogue;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.ArrayList;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,5 +15,7 @@ import java.sql.SQLException;
 public class GestionCatalogue {
     
     public static void main(String[] args){
+        
+        ArrayList<Produits> produit = new ArrayList<>();
     }
 }
