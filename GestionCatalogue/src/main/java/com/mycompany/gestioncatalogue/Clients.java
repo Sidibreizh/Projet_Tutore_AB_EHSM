@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * @author elyes
  */
 public class Clients {
-    
+
     public static int getIdClient(String n, String p){
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
         String sql = "select idUtilisateur from utilisateur where nomClient LIKE '" + n + "%' AND prenomClient LIKE '" + p + "%'" ;
@@ -122,4 +122,3 @@ public class Clients {
         return(false);
     }  
 }    
-    

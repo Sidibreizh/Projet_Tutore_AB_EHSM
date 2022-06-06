@@ -477,6 +477,16 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         IDFournisseur.setText("Fournisseur :");
 
         ButSuppr.setText("Supprimer le produit");
+        ButSuppr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButSupprMouseClicked(evt);
+            }
+        });
+        ButSuppr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButSupprActionPerformed(evt);
+            }
+        });
 
         ButModif.setText("Modifier le produit");
         ButModif.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -694,7 +704,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_ImageProd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(PanResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_ImageProd, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanResultLayout.createSequentialGroup()
@@ -891,7 +901,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(Bsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(Bannule, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         PanSearchPromoLayout.setVerticalGroup(
             PanSearchPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -924,6 +934,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 "idSolde", "pourcentage", "idProduit"
             }
         ));
+        jTable2.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jTable2ComponentAdded(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         javax.swing.GroupLayout PanTabPromoLayout = new javax.swing.GroupLayout(PanTabPromo);
@@ -1188,7 +1203,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                     .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lblpseudo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblPrenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                 .addComponent(PanRESclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
@@ -1223,21 +1238,32 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nom", "Prenom", "Telephone", "Adresse", "E-mail"
+                "Nom", "Prenom", "Adresse", "Telephone", "E-mail", "Ville"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTable1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(jTable1);
@@ -1500,7 +1526,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                         .addComponent(PannCreerCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Button_effacer1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelAMSCatLayout.setVerticalGroup(
             PanelAMSCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1926,17 +1952,26 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             Object[]tabStock = Stocks.getStock(Produits.getProduit(libelle).getIdProduit()).toArray();
             String qte = tabStock[0].toString();
             tf_qte.setText(qte);
+            int quantite = Integer.valueOf(qte);
             String alertMin = tabStock[1].toString();
+            int alertMinimal = Integer.valueOf(alertMin);
             tf_alerteMin.setText(alertMin);
             String alertMax = tabStock[2].toString();
+            int alertMaximale = Integer.valueOf(alertMax);
             tf_alerteMax.setText(alertMax);  
             Button_Search.setEnabled(false);
             Button_effacer.setEnabled(false);
             PanSearch.setEnabled(false);
+            
+            if(quantite<alertMinimal){
+                JOptionPane.showMessageDialog(this, "Attention la quantité de ce produit est en dessous du seuil minimal !"); 
+                ButModif.setEnabled(true);
+            }
+            if(quantite>alertMaximale){
+                JOptionPane.showMessageDialog(this, "Attention la quantité de ce produit est au dessus du seuil maximal !"); 
+                ButModif.setEnabled(true);
+            }
         }
-    /*else if("null".equals(Produits.recupIdProduit(libelle))){
-        JOptionPane.showMessageDialog(this, "Ce libellé n'existe pas.");  
-    }*/
     else{
         PanResult.setVisible(false);
         JOptionPane.showMessageDialog(this, "Saisissez le libellé d'un produit svp.");  
@@ -2176,6 +2211,8 @@ public class IHM_Catalogue extends javax.swing.JFrame{
          PanResult.setVisible(false);
             for (Component c : PanSearch.getComponents()){
             c.setEnabled(true);
+            Button_Search.setEnabled(true);
+            Button_effacer.setEnabled(true);
             } 
     }//GEN-LAST:event_butAnnulerMouseClicked
 
@@ -2213,7 +2250,10 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                     for (Component c : PanSearch.getComponents()){
                     c.setEnabled(true);
                     } 
+                    Button_Search.setEnabled(true);
+                    Button_effacer.setEnabled(true);
                 }
+           
             }
             else{
                 JOptionPane.showMessageDialog(this, "Le produit n'a pas été modifié ! Vérifiez vos données s'il vous plaît.");
@@ -2330,6 +2370,10 @@ public class IHM_Catalogue extends javax.swing.JFrame{
              for (Component c : Pan_ResCat.getComponents()){
                         c.setEnabled(true);
              }
+             tfcat.setText("");
+             tfsscat.setText("");
+             tfimage.setText("");
+             cb_Categ1.setSelectedIndex(0);
             }
             else{
                 JOptionPane.showMessageDialog(this, "La catégorie n'a pas été ajoutée !");
@@ -2361,6 +2405,10 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                  for (Component c : Pan_ResCat.getComponents()){
                             c.setEnabled(true);
                  }
+                 tfcat.setText("");
+                 tfsscat.setText("");
+                 tfimage.setText("");
+                 cb_Categ1.setSelectedIndex(0);
             }
             else{
                 JOptionPane.showMessageDialog(this, "La sous-catégorie n'a pas été ajoutée !");
@@ -2466,7 +2514,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                  }
                  for (Component c : Pan_ResCat.getComponents()){
                             c.setEnabled(true);
-                 }                    
+                 }      
+                 tfcat.setText("");
+                 tfsscat.setText("");
+                 tfimage.setText("");
+                 cb_Categ1.setSelectedIndex(0);
             }
         else{
                 JOptionPane.showMessageDialog(this, "La catégorie n'a pas été modifiée !");
@@ -2520,7 +2572,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                  }
                  for (Component c : Pan_ResCat.getComponents()){
                             c.setEnabled(true);
-                 }                    
+                 }  
+                 
+                tfcat.setText("");
+                tfsscat.setText("");
+                tfimage.setText("");
+                cb_Categ1.setSelectedIndex(0);
             }
         else{
                 JOptionPane.showMessageDialog(this, "La sous-catégorie n'a pas été modifiée !");
@@ -2655,6 +2712,39 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             }
         }     
     }//GEN-LAST:event_BeraseMouseClicked
+
+    private void jTable2ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTable2ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2ComponentAdded
+
+    private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
+
+    }//GEN-LAST:event_jTable1AncestorAdded
+
+    private void ButSupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSupprActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButSupprActionPerformed
+
+    private void ButSupprMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButSupprMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer ce produit ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int id = Integer.valueOf(tf_ID.getText());
+        if (reply == JOptionPane.YES_OPTION){
+            if(Stocks.supprProduit(id) == true){
+                if(Produits.supprProduit(id) == true){
+                    JOptionPane.showMessageDialog(this, "Le produit a été supprimé de la base de données.");
+                    PanResult.setVisible(false);
+                        for (Component c : PanSearch.getComponents()){
+                        c.setEnabled(true);
+                        } 
+                        Button_Search.setEnabled(true);
+                        Button_effacer.setEnabled(true);
+                }
+            }
+        else{
+                JOptionPane.showMessageDialog(this, "Le produit n'a pas été supprimé !");
+            }
+        }     
+    }//GEN-LAST:event_ButSupprMouseClicked
     /**
      * @param args the command line arguments
      */
