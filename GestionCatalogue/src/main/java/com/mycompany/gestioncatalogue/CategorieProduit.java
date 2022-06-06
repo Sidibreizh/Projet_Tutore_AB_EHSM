@@ -159,7 +159,7 @@ public class CategorieProduit{
     
     public static boolean modifCat(int idCat, String nomCategorie, String imgCat){
         String url = "jdbc:mysql://localhost:3306/croquetteatemps";
-        String sql = "update categorie_produit set nomCategorie = ?,imgCat = ? where idCategorie='"+ idCat + "'";
+        String sql = "update categorie_produit set nomCategorie = ?,imgCat = ? where idCategorie="+ idCat;
         
         try {
                 Connection connection = DriverManager.getConnection(url, "root", "");
@@ -174,5 +174,88 @@ public class CategorieProduit{
                 return(false);
         }
     }
+    
+    public static boolean modifSsCat(int idSsCat, String nomSsCategorie, String imgSsCat){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "update souscategorie_produit set nomSsCategorie = ?,imgSsCat = ? where idSsCategorie="+ idSsCat;
         
+        try {
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pstCat = (PreparedStatement) connection.prepareStatement(sql);
+                pstCat.setString(1,nomSsCategorie);
+                pstCat.setString(2,imgSsCat);
+                pstCat.execute();
+                connection.close();
+                return(true);                                
+            } catch (SQLException e) {
+                System.out.println(e);
+                return(false);
+        }
+    }
+ 
+    public static boolean delCat(String nomCategorie){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "delete from categorie_produit where nomCategorie=?";
+        try{
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pstProd = (PreparedStatement) connection.prepareStatement(sql);
+                pstProd.setString(1, nomCategorie);
+                pstProd.execute();
+                return(true);
+        } catch (SQLException e) {
+                System.out.println(e);      
+        }
+        return(false);
+    }        
+    
+    public static boolean delSsCat(String nomSsCategorie){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "delete from souscategorie_produit where nomSsCategorie=?";
+        try{
+                Connection connection = DriverManager.getConnection(url, "root", "");
+                PreparedStatement pstProd = (PreparedStatement) connection.prepareStatement(sql);
+                pstProd.setString(1, nomSsCategorie);
+                pstProd.execute();
+                return true;
+        } catch (SQLException e) {
+                System.out.println(e);      
+        }
+        return(false);
+    }        
+    
+    public static String imageCat(String nomCategorie){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "select imgCat from categorie_produit where nomCategorie = '" + nomCategorie + "'";
+        try {
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(sql);
+            ResultSet res = pst.executeQuery();
+            while(res.next()){
+                String img = res.getString("imgCat");
+                connection.close();
+                return img;
+             }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return "null";
+    }
+    
+    public static String imageSsCat(String nomSsCategorie){
+        String url = "jdbc:mysql://localhost:3306/croquetteatemps";
+        String sql = "select imgSsCat from souscategorie_produit where nomSsCategorie = '" + nomSsCategorie + "'";
+        try {
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(sql);
+            ResultSet res = pst.executeQuery();
+            while(res.next()){
+                String img = res.getString("imgSsCat");
+                connection.close();
+                return img;
+             }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return "null";
+    }
 }

@@ -1,10 +1,12 @@
 package IHM;
 
 import com.mycompany.gestioncatalogue.CategorieProduit;
+import com.mycompany.gestioncatalogue.Clients;
 import com.mycompany.gestioncatalogue.ConnexionDAO;
 import com.mycompany.gestioncatalogue.Fournisseur;
 import com.mycompany.gestioncatalogue.Marque;
 import com.mycompany.gestioncatalogue.Produits;
+import com.mycompany.gestioncatalogue.Promotions;
 import com.mycompany.gestioncatalogue.Solde;
 import com.mycompany.gestioncatalogue.Stocks;
 import java.awt.Component;
@@ -29,17 +31,17 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         affecterFournisseur();
         PanResult.setVisible(false);
         ButValider.setVisible(false);
-        Pan_addCat.setVisible(false);
+        Pan_ResCat.setVisible(false);
     }  
     
     private void affecterCat(){
         Object[] tabCat = CategorieProduit.getCategorie().toArray();
+        
         for(int i=0;i<tabCat.length;i++){
             cb_Cat.addItem((String)tabCat[i]);
             cb_Categ.addItem((String)tabCat[i]);
             cb_Categ1.addItem((String)tabCat[i]);
             cb_cat.addItem((String)tabCat[i]);
-            cb_Categ.addItem((String)tabCat[i]);
         }
     }       
     
@@ -139,73 +141,78 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         jPanAjouter = new javax.swing.JPanel();
         jButAdd = new javax.swing.JButton();
         PanelPromo = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        PanSearchPromo = new javax.swing.JPanel();
+        lbl_idPromo = new javax.swing.JLabel();
+        tfpromo = new javax.swing.JTextField();
+        Bsearch = new javax.swing.JButton();
+        tf_pourcent = new javax.swing.JTextField();
+        lblpourcent = new javax.swing.JLabel();
+        lblpercent = new javax.swing.JLabel();
+        Bannule = new javax.swing.JButton();
         lbl_SearchPromo = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        PanTabPromo = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        PanAMSPromo = new javax.swing.JPanel();
+        lblprom = new javax.swing.JLabel();
+        tfprom = new javax.swing.JTextField();
+        lblper = new javax.swing.JLabel();
+        tfper = new javax.swing.JTextField();
+        PanAMSSolde = new javax.swing.JPanel();
+        BAdd = new javax.swing.JButton();
+        Bmodify = new javax.swing.JButton();
+        Berase = new javax.swing.JButton();
+        lblpercent1 = new javax.swing.JLabel();
         PanelClients = new javax.swing.JPanel();
         lbl_cust = new javax.swing.JLabel();
         PanSearchClient = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        lbl_idClient = new javax.swing.JLabel();
+        tf_idclient = new javax.swing.JTextField();
+        lblNom = new javax.swing.JLabel();
+        tfNom = new javax.swing.JTextField();
+        lblPrenom = new javax.swing.JLabel();
+        tfPrenom = new javax.swing.JTextField();
+        PanRESclient = new javax.swing.JPanel();
+        Bsearch_client = new javax.swing.JButton();
+        Bcancel_client = new javax.swing.JButton();
+        Bdel_client = new javax.swing.JButton();
+        lblpseudo = new javax.swing.JLabel();
+        tfpseudo = new javax.swing.JTextField();
+        PanTabClient = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         PanelCat = new javax.swing.JPanel();
         lbl_cat = new javax.swing.JLabel();
-        PanSearchCat = new javax.swing.JPanel();
-        lbl_categ = new javax.swing.JLabel();
-        cb_Categ = new javax.swing.JComboBox<>();
-        lbl_ssCateg = new javax.swing.JLabel();
-        cb_ssCateg = new javax.swing.JComboBox<>();
+        PanelAMSCat = new javax.swing.JPanel();
         PannButtonSearch1 = new javax.swing.JPanel();
-        Button_effacer1 = new javax.swing.JButton();
         Button_Search1 = new javax.swing.JButton();
-        Button_effacer2 = new javax.swing.JButton();
         Button_Search2 = new javax.swing.JButton();
         ButModifCat = new javax.swing.JButton();
         ButSupCat = new javax.swing.JButton();
         ButModifSsCat = new javax.swing.JButton();
         ButSupSsCat = new javax.swing.JButton();
-        bvalide2 = new javax.swing.JButton();
-        bvalide3 = new javax.swing.JButton();
-        Pan_addCat = new javax.swing.JPanel();
+        PannCreerCat = new javax.swing.JPanel();
+        ButCreerCat = new javax.swing.JButton();
+        ButCreerSsCat = new javax.swing.JButton();
+        PanCatSsCat = new javax.swing.JPanel();
+        lbl_categ = new javax.swing.JLabel();
+        cb_Categ = new javax.swing.JComboBox<>();
+        lbl_ssCateg = new javax.swing.JLabel();
+        cb_ssCateg = new javax.swing.JComboBox<>();
+        Button_effacer1 = new javax.swing.JButton();
+        Pan_ResCat = new javax.swing.JPanel();
         lbl_categ1 = new javax.swing.JLabel();
         lbl_ssCateg1 = new javax.swing.JLabel();
         tfsscat = new javax.swing.JTextField();
         tfcat = new javax.swing.JTextField();
         lblimage = new javax.swing.JLabel();
         tfimage = new javax.swing.JTextField();
-        bvalideCat = new javax.swing.JButton();
+        bvalideAddCat = new javax.swing.JButton();
         bvalideSsCat = new javax.swing.JButton();
         cb_Categ1 = new javax.swing.JComboBox<>();
-        PannCreerModiSuppr = new javax.swing.JPanel();
-        ButCreerCat = new javax.swing.JButton();
-        ButCreerSsCat = new javax.swing.JButton();
-        PanResCat = new javax.swing.JPanel();
+        bvalideModifCat = new javax.swing.JButton();
+        bvalideModifSsCat = new javax.swing.JButton();
+        PanTableau = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableauCat = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -228,9 +235,22 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         tabPC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tabPC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabPC.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabPCStateChanged(evt);
+            }
+        });
         tabPC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabPCMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabPCMousePressed(evt);
+            }
+        });
+        tabPC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabPCKeyPressed(evt);
             }
         });
 
@@ -530,18 +550,18 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         PanAddLayout.setHorizontalGroup(
             PanAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanAddLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addGap(59, 59, 59)
                 .addComponent(ButAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(ButCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(75, 75, 75))
         );
         PanAddLayout.setVerticalGroup(
             PanAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanAddLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addGroup(PanAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -682,7 +702,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                         .addComponent(PanAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(PanResultLayout.createSequentialGroup()
-                .addGap(412, 412, 412)
+                .addGap(415, 415, 415)
                 .addComponent(ButValider, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -779,16 +799,16 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         jPanAjouterLayout.setHorizontalGroup(
             jPanAjouterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanAjouterLayout.createSequentialGroup()
-                .addGap(363, 363, 363)
+                .addGap(388, 388, 388)
                 .addComponent(jButAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanAjouterLayout.setVerticalGroup(
             jPanAjouterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanAjouterLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanAjouterLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jButAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout PanelProduitsLayout = new javax.swing.GroupLayout(PanelProduits);
@@ -817,59 +837,81 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(PanSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(516, Short.MAX_VALUE))
+                .addContainerGap(6968, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Produits", PanelProduits);
 
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanSearchPromo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel4.setText("ID Promotion :");
+        lbl_idPromo.setText("ID Promotion :");
 
-        jButton3.setText("Rechercher");
+        tfpromo.setEnabled(false);
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+        Bsearch.setText("Rechercher");
+        Bsearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BsearchMouseClicked(evt);
             }
         });
 
-        jLabel6.setText("Pourcentage :");
+        tf_pourcent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_pourcentActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        lblpourcent.setText("Pourcentage :");
+
+        lblpercent.setText("%");
+
+        Bannule.setText("Annuler");
+        Bannule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BannuleMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanSearchPromoLayout = new javax.swing.GroupLayout(PanSearchPromo);
+        PanSearchPromo.setLayout(PanSearchPromoLayout);
+        PanSearchPromoLayout.setHorizontalGroup(
+            PanSearchPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanSearchPromoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(lbl_idPromo)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(tfpromo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
+                .addComponent(lblpourcent)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
-                .addComponent(jButton3)
-                .addGap(23, 23, 23))
+                .addComponent(tf_pourcent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblpercent, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(Bsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(Bannule, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        PanSearchPromoLayout.setVerticalGroup(
+            PanSearchPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanSearchPromoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PanSearchPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_idPromo)
+                    .addComponent(tfpromo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bsearch)
+                    .addComponent(tf_pourcent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblpourcent)
+                    .addComponent(lblpercent)
+                    .addComponent(Bannule))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         lbl_SearchPromo.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
         lbl_SearchPromo.setText("Rechercher une promotion");
 
-        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanTabPromo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -884,99 +926,123 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         ));
         jScrollPane3.setViewportView(jTable2);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanTabPromoLayout = new javax.swing.GroupLayout(PanTabPromo);
+        PanTabPromo.setLayout(PanTabPromoLayout);
+        PanTabPromoLayout.setHorizontalGroup(
+            PanTabPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanTabPromoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        PanTabPromoLayout.setVerticalGroup(
+            PanTabPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanTabPromoLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanAMSPromo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel7.setText("ID Promotion :");
+        lblprom.setText("ID Promotion :");
 
-        jLabel8.setText("Pourcentage :");
+        tfprom.setEnabled(false);
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        lblper.setText("Pourcentage :");
+
+        tfper.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                tfperActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Ajouter");
-
-        jButton9.setText("Modifier");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+        BAdd.setText("Ajouter");
+        BAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BAddMouseClicked(evt);
             }
         });
 
-        jButton10.setText("Supprimer");
+        Bmodify.setText("Modifier");
+        Bmodify.setEnabled(false);
+        Bmodify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BmodifyMouseClicked(evt);
+            }
+        });
+        Bmodify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BmodifyActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        Berase.setText("Supprimer");
+        Berase.setEnabled(false);
+        Berase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BeraseMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanAMSSoldeLayout = new javax.swing.GroupLayout(PanAMSSolde);
+        PanAMSSolde.setLayout(PanAMSSoldeLayout);
+        PanAMSSoldeLayout.setHorizontalGroup(
+            PanAMSSoldeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanAMSSoldeLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButton9)
-                .addGap(26, 26, 26)
-                .addComponent(jButton10)
-                .addGap(36, 36, 36))
+                .addComponent(BAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(Bmodify, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(Berase, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addGap(26, 26, 26))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
+        PanAMSSoldeLayout.setVerticalGroup(
+            PanAMSSoldeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanAMSSoldeLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(PanAMSSoldeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bmodify, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Berase, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        lblpercent1.setText("%");
+
+        javax.swing.GroupLayout PanAMSPromoLayout = new javax.swing.GroupLayout(PanAMSPromo);
+        PanAMSPromo.setLayout(PanAMSPromoLayout);
+        PanAMSPromoLayout.setHorizontalGroup(
+            PanAMSPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanAMSPromoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(lblprom)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addComponent(tfprom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(lblper)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(362, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tfper, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblpercent1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(PanAMSSolde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        PanAMSPromoLayout.setVerticalGroup(
+            PanAMSPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanAMSPromoLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(PanAMSPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblprom)
+                    .addComponent(tfprom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblper)
+                    .addComponent(tfper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblpercent1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PanAMSPromoLayout.createSequentialGroup()
+                .addComponent(PanAMSSolde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
@@ -987,12 +1053,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             .addGroup(PanelPromoLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(PanelPromoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanSearchPromo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelPromoLayout.createSequentialGroup()
                         .addComponent(lbl_SearchPromo)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PanAMSPromo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanTabPromo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelPromoLayout.setVerticalGroup(
@@ -1000,12 +1066,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             .addGroup(PanelPromoLayout.createSequentialGroup()
                 .addComponent(lbl_SearchPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanSearchPromo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanAMSPromo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(624, Short.MAX_VALUE))
+                .addComponent(PanTabPromo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7076, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Promotions", PanelPromo);
@@ -1015,61 +1081,88 @@ public class IHM_Catalogue extends javax.swing.JFrame{
 
         PanSearchClient.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("ID Client :");
+        lbl_idClient.setText("ID Client :");
 
-        jLabel2.setText("Nom :");
+        tf_idclient.setEnabled(false);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        lblNom.setText("Nom :");
+
+        tfNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                tfNomActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Prénom :");
+        lblPrenom.setText("Prénom :");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        tfPrenom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                tfPrenomActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Recherche");
-
-        jButton2.setText("Effacer");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        Bsearch_client.setText("Recherche");
+        Bsearch_client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Bsearch_clientMouseClicked(evt);
             }
         });
 
-        jButton7.setText("Supprimer un client");
+        Bcancel_client.setText("Annuler");
+        Bcancel_client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Bcancel_clientMouseClicked(evt);
+            }
+        });
+        Bcancel_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bcancel_clientActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        Bdel_client.setText("Supprimer client");
+        Bdel_client.setEnabled(false);
+        Bdel_client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Bdel_clientMouseClicked(evt);
+            }
+        });
+        Bdel_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bdel_clientActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanRESclientLayout = new javax.swing.GroupLayout(PanRESclient);
+        PanRESclient.setLayout(PanRESclientLayout);
+        PanRESclientLayout.setHorizontalGroup(
+            PanRESclientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanRESclientLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(22, 22, 22))
+                .addGroup(PanRESclientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Bcancel_client, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Bsearch_client, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(Bdel_client, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+        PanRESclientLayout.setVerticalGroup(
+            PanRESclientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanRESclientLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Bsearch_client, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(Bcancel_client, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(PanRESclientLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(14, 14, 14))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Bdel_client, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblpseudo.setText("Pseudo :");
+
+        tfpseudo.setEnabled(false);
 
         javax.swing.GroupLayout PanSearchClientLayout = new javax.swing.GroupLayout(PanSearchClient);
         PanSearchClient.setLayout(PanSearchClientLayout);
@@ -1080,46 +1173,53 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanSearchClientLayout.createSequentialGroup()
                         .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(lbl_idClient)
+                            .addComponent(lblNom))
                         .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanSearchClientLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_idclient, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanSearchClientLayout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                                    .addComponent(jTextField3)))
-                            .addGroup(PanSearchClientLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+                                    .addComponent(tfpseudo)
+                                    .addComponent(tfNom, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                    .addComponent(tfPrenom)))))
+                    .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lblpseudo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblPrenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                .addComponent(PanRESclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
         );
         PanSearchClientLayout.setVerticalGroup(
             PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanSearchClientLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanSearchClientLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_idClient)
+                            .addComponent(tf_idclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNom)
+                            .addComponent(tfNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
                         .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanSearchClientLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblPrenom)
+                            .addComponent(tfPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanSearchClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblpseudo)
+                            .addComponent(tfpseudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PanSearchClientLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(PanRESclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanTabClient.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1142,15 +1242,15 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
         jScrollPane2.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PanTabClientLayout = new javax.swing.GroupLayout(PanTabClient);
+        PanTabClient.setLayout(PanTabClientLayout);
+        PanTabClientLayout.setHorizontalGroup(
+            PanTabClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        PanTabClientLayout.setVerticalGroup(
+            PanTabClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanTabClientLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
@@ -1167,7 +1267,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                     .addGroup(PanelClientsLayout.createSequentialGroup()
                         .addComponent(lbl_cust)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PanTabClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelClientsLayout.setVerticalGroup(
@@ -1177,9 +1277,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addComponent(lbl_cust, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(549, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(PanTabClient, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(6998, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Clients", PanelClients);
@@ -1187,26 +1287,7 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         lbl_cat.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
         lbl_cat.setText("Rechercher une Catégorie");
 
-        PanSearchCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        lbl_categ.setText("Catégorie :");
-
-        cb_Categ.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_CategItemStateChanged(evt);
-            }
-        });
-        cb_Categ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_CategActionPerformed(evt);
-            }
-        });
-
-        lbl_ssCateg.setText("Sous-Catégorie :");
-
-        cb_ssCateg.setToolTipText("");
-
-        Button_effacer1.setText("Effacer");
+        PanelAMSCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         Button_Search1.setText("Rechercher");
         Button_Search1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1219,8 +1300,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 Button_Search1ActionPerformed(evt);
             }
         });
-
-        Button_effacer2.setText("Effacer");
 
         Button_Search2.setText("Rechercher");
         Button_Search2.addActionListener(new java.awt.event.ActionListener() {
@@ -1242,6 +1321,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
 
         ButSupCat.setText("Supprimer une catégorie");
+        ButSupCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButSupCatMouseClicked(evt);
+            }
+        });
         ButSupCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButSupCatActionPerformed(evt);
@@ -1249,6 +1333,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
 
         ButModifSsCat.setText("Modifier une sous-catégorie");
+        ButModifSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButModifSsCatMouseClicked(evt);
+            }
+        });
         ButModifSsCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButModifSsCatActionPerformed(evt);
@@ -1256,15 +1345,11 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
 
         ButSupSsCat.setText("Supprimer une sous-catégorie");
-
-        bvalide2.setText("Valider");
-        bvalide2.addMouseListener(new java.awt.event.MouseAdapter() {
+        ButSupSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bvalide2MouseClicked(evt);
+                ButSupSsCatMouseClicked(evt);
             }
         });
-
-        bvalide3.setText("Valider");
 
         javax.swing.GroupLayout PannButtonSearch1Layout = new javax.swing.GroupLayout(PannButtonSearch1);
         PannButtonSearch1.setLayout(PannButtonSearch1Layout);
@@ -1277,21 +1362,13 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                     .addComponent(ButModifCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButSupSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButSupCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButSupCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButSupSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(99, 99, 99)
+                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Button_Search1)
                     .addComponent(Button_Search2))
-                .addGap(18, 18, 18)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_effacer1)
-                    .addComponent(Button_effacer2))
-                .addGap(18, 18, 18)
-                .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bvalide2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bvalide3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         PannButtonSearch1Layout.setVerticalGroup(
             PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1300,100 +1377,13 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButModifCat)
                     .addComponent(ButSupCat)
-                    .addComponent(Button_Search1)
-                    .addComponent(Button_effacer1)
-                    .addComponent(bvalide2))
+                    .addComponent(Button_Search1))
                 .addGap(18, 18, 18)
                 .addGroup(PannButtonSearch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButModifSsCat)
                     .addComponent(ButSupSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Button_Search2)
-                    .addComponent(Button_effacer2)
-                    .addComponent(bvalide3))
+                    .addComponent(Button_Search2))
                 .addGap(23, 23, 23))
-        );
-
-        lbl_categ1.setText("Catégorie :");
-
-        lbl_ssCateg1.setText("Sous-Catégorie :");
-
-        lblimage.setText("Image :");
-
-        bvalideCat.setText("Valider");
-        bvalideCat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bvalideCatMouseClicked(evt);
-            }
-        });
-
-        bvalideSsCat.setText("Valider");
-        bvalideSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bvalideSsCatMouseClicked(evt);
-            }
-        });
-
-        cb_Categ1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_Categ1ItemStateChanged(evt);
-            }
-        });
-        cb_Categ1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_Categ1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Pan_addCatLayout = new javax.swing.GroupLayout(Pan_addCat);
-        Pan_addCat.setLayout(Pan_addCatLayout);
-        Pan_addCatLayout.setHorizontalGroup(
-            Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Pan_addCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Pan_addCatLayout.createSequentialGroup()
-                        .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfimage)
-                        .addContainerGap())
-                    .addGroup(Pan_addCatLayout.createSequentialGroup()
-                        .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Pan_addCatLayout.createSequentialGroup()
-                                .addComponent(lbl_categ1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfcat, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Pan_addCatLayout.createSequentialGroup()
-                                .addComponent(lbl_ssCateg1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfsscat, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31)
-                        .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bvalideCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pan_addCatLayout.createSequentialGroup()
-                                .addComponent(cb_Categ1, 0, 172, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(bvalideSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24))))
-        );
-        Pan_addCatLayout.setVerticalGroup(
-            Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Pan_addCatLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_categ1)
-                    .addComponent(tfcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bvalideCat))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_ssCateg1)
-                    .addComponent(tfsscat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bvalideSsCat)
-                    .addComponent(cb_Categ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(Pan_addCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblimage)
-                    .addComponent(tfimage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         ButCreerCat.setText("Créer une catégorie");
@@ -1420,76 +1410,218 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             }
         });
 
-        javax.swing.GroupLayout PannCreerModiSupprLayout = new javax.swing.GroupLayout(PannCreerModiSuppr);
-        PannCreerModiSuppr.setLayout(PannCreerModiSupprLayout);
-        PannCreerModiSupprLayout.setHorizontalGroup(
-            PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButCreerCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButCreerSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout PannCreerCatLayout = new javax.swing.GroupLayout(PannCreerCat);
+        PannCreerCat.setLayout(PannCreerCatLayout);
+        PannCreerCatLayout.setHorizontalGroup(
+            PannCreerCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannCreerCatLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(ButCreerCat, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(ButCreerSsCat)
+                .addGap(71, 71, 71))
         );
-        PannCreerModiSupprLayout.setVerticalGroup(
-            PannCreerModiSupprLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannCreerModiSupprLayout.createSequentialGroup()
+        PannCreerCatLayout.setVerticalGroup(
+            PannCreerCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannCreerCatLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(ButCreerCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ButCreerSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PannCreerCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButCreerCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButCreerSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout PanSearchCatLayout = new javax.swing.GroupLayout(PanSearchCat);
-        PanSearchCat.setLayout(PanSearchCatLayout);
-        PanSearchCatLayout.setHorizontalGroup(
-            PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanSearchCatLayout.createSequentialGroup()
+        lbl_categ.setText("Catégorie :");
+
+        cb_Categ.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_CategItemStateChanged(evt);
+            }
+        });
+        cb_Categ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_CategActionPerformed(evt);
+            }
+        });
+
+        lbl_ssCateg.setText("Sous-Catégorie :");
+
+        cb_ssCateg.setToolTipText("");
+
+        javax.swing.GroupLayout PanCatSsCatLayout = new javax.swing.GroupLayout(PanCatSsCat);
+        PanCatSsCat.setLayout(PanCatSsCatLayout);
+        PanCatSsCatLayout.setHorizontalGroup(
+            PanCatSsCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanCatSsCatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanSearchCatLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_ssCateg)
-                            .addComponent(lbl_categ))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cb_Categ, 0, 172, Short.MAX_VALUE)
-                            .addComponent(cb_ssCateg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PannButtonSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(PanSearchCatLayout.createSequentialGroup()
-                        .addComponent(Pan_addCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
-        );
-        PanSearchCatLayout.setVerticalGroup(
-            PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanSearchCatLayout.createSequentialGroup()
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanSearchCatLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_Categ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_categ))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_ssCateg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_ssCateg)))
-                    .addGroup(PanSearchCatLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PannButtonSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(PanCatSsCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_ssCateg)
+                    .addComponent(lbl_categ))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanSearchCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pan_addCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PannCreerModiSuppr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(PanCatSsCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cb_Categ, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_ssCateg, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        PanCatSsCatLayout.setVerticalGroup(
+            PanCatSsCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanCatSsCatLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(PanCatSsCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_Categ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_categ))
+                .addGap(18, 18, 18)
+                .addGroup(PanCatSsCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_ssCateg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_ssCateg))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        PanResCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Button_effacer1.setText("Annuler");
+        Button_effacer1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_effacer1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelAMSCatLayout = new javax.swing.GroupLayout(PanelAMSCat);
+        PanelAMSCat.setLayout(PanelAMSCatLayout);
+        PanelAMSCatLayout.setHorizontalGroup(
+            PanelAMSCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAMSCatLayout.createSequentialGroup()
+                .addGroup(PanelAMSCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAMSCatLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanCatSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PannButtonSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAMSCatLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(PannCreerCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Button_effacer1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+        PanelAMSCatLayout.setVerticalGroup(
+            PanelAMSCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAMSCatLayout.createSequentialGroup()
+                .addGroup(PanelAMSCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAMSCatLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(PannCreerCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(PanelAMSCatLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(Button_effacer1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(PanelAMSCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PanCatSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PannButtonSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        Pan_ResCat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lbl_categ1.setText("Catégorie :");
+
+        lbl_ssCateg1.setText("Sous-Catégorie :");
+
+        lblimage.setText("Image :");
+
+        bvalideAddCat.setText("Valider");
+        bvalideAddCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalideAddCatMouseClicked(evt);
+            }
+        });
+
+        bvalideSsCat.setText("Valider");
+        bvalideSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalideSsCatMouseClicked(evt);
+            }
+        });
+
+        cb_Categ1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_Categ1ItemStateChanged(evt);
+            }
+        });
+        cb_Categ1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_Categ1ActionPerformed(evt);
+            }
+        });
+
+        bvalideModifCat.setText("Valider");
+        bvalideModifCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalideModifCatMouseClicked(evt);
+            }
+        });
+
+        bvalideModifSsCat.setText("Valider");
+        bvalideModifSsCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bvalideModifSsCatMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Pan_ResCatLayout = new javax.swing.GroupLayout(Pan_ResCat);
+        Pan_ResCat.setLayout(Pan_ResCatLayout);
+        Pan_ResCatLayout.setHorizontalGroup(
+            Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Pan_ResCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pan_ResCatLayout.createSequentialGroup()
+                        .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfimage)
+                        .addContainerGap())
+                    .addGroup(Pan_ResCatLayout.createSequentialGroup()
+                        .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_ssCateg1)
+                            .addComponent(lbl_categ1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfcat, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(tfsscat))
+                        .addGap(71, 71, 71)
+                        .addComponent(cb_Categ1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bvalideModifCat, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(bvalideModifSsCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bvalideSsCat, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bvalideAddCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))))
+        );
+        Pan_ResCatLayout.setVerticalGroup(
+            Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Pan_ResCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_categ1)
+                    .addComponent(tfcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bvalideAddCat)
+                    .addComponent(bvalideModifCat))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ssCateg1)
+                    .addComponent(tfsscat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bvalideSsCat)
+                    .addComponent(cb_Categ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bvalideModifSsCat))
+                .addGap(9, 9, 9)
+                .addGroup(Pan_ResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblimage)
+                    .addComponent(tfimage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        PanTableau.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         TableauCat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1513,20 +1645,20 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         TableauCat.setEnabled(false);
         jScrollPane1.setViewportView(TableauCat);
 
-        javax.swing.GroupLayout PanResCatLayout = new javax.swing.GroupLayout(PanResCat);
-        PanResCat.setLayout(PanResCatLayout);
-        PanResCatLayout.setHorizontalGroup(
-            PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanResCatLayout.createSequentialGroup()
+        javax.swing.GroupLayout PanTableauLayout = new javax.swing.GroupLayout(PanTableau);
+        PanTableau.setLayout(PanTableauLayout);
+        PanTableauLayout.setHorizontalGroup(
+            PanTableauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanTableauLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
-        PanResCatLayout.setVerticalGroup(
-            PanResCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanResCatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+        PanTableauLayout.setVerticalGroup(
+            PanTableauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanTableauLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1535,17 +1667,14 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         PanelCatLayout.setHorizontalGroup(
             PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCatLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Pan_ResCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelAMSCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelCatLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PanelCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PanResCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(PanelCatLayout.createSequentialGroup()
-                                .addComponent(lbl_cat)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(PanelCatLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(PanSearchCat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(lbl_cat)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(PanTableau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelCatLayout.setVerticalGroup(
@@ -1554,10 +1683,12 @@ public class IHM_Catalogue extends javax.swing.JFrame{
                 .addContainerGap()
                 .addComponent(lbl_cat, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanSearchCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanResCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(539, Short.MAX_VALUE))
+                .addComponent(PanelAMSCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Pan_ResCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanTableau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(6985, Short.MAX_VALUE))
         );
 
         tabPC.addTab("Catégories", PanelCat);
@@ -1662,33 +1793,33 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_ButModifSsCatActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tfNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tfNomActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void tfPrenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrenomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_tfPrenomActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Bcancel_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bcancel_clientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Bcancel_clientActionPerformed
 
     private void jButAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButAddActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void tf_pourcentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_pourcentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_tf_pourcentActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void tfperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfperActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_tfperActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void BmodifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmodifyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_BmodifyActionPerformed
 
     private void jMGestCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestCatActionPerformed
 
@@ -1799,9 +1930,9 @@ public class IHM_Catalogue extends javax.swing.JFrame{
             tf_alerteMin.setText(alertMin);
             String alertMax = tabStock[2].toString();
             tf_alerteMax.setText(alertMax);  
-            Button_Search.enable(false);
-            Button_effacer.enable(false);
-            PanSearch.enable(false);
+            Button_Search.setEnabled(false);
+            Button_effacer.setEnabled(false);
+            PanSearch.setEnabled(false);
         }
     /*else if("null".equals(Produits.recupIdProduit(libelle))){
         JOptionPane.showMessageDialog(this, "Ce libellé n'existe pas.");  
@@ -1959,13 +2090,13 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private void Radio_ouiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio_ouiMouseClicked
         Radio_oui.setSelected(true);
         Radio_non.setSelected(false);
-        cb_Solde.enable(true);      
+        cb_Solde.setEnabled(true);      
     }//GEN-LAST:event_Radio_ouiMouseClicked
 
     private void Radio_nonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio_nonMouseClicked
         Radio_non.setSelected(true);
         Radio_oui.setSelected(false);
-        cb_Solde.enable(false);
+        cb_Solde.setEnabled(false);
         tf_prixRed.setText("0");
     }//GEN-LAST:event_Radio_nonMouseClicked
 
@@ -2103,25 +2234,48 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_jMGestCatMouseClicked
 
     private void ButModifCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButModifCatMouseClicked
-        Pan_addCat.setVisible(true);
+         Pan_ResCat.setVisible(true);
+         for (Component c : PanCatSsCat.getComponents()){
+                    c.setEnabled(false);
+         } 
+         for (Component c : PannButtonSearch1.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : PannCreerCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : Pan_ResCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         tfcat.setEnabled(true);
+         tfcat.setText(cb_Categ.getSelectedItem().toString());
+         tfimage.setEnabled(true);
+         tfimage.setText(CategorieProduit.imageCat(cb_Categ.getSelectedItem().toString()));
+         bvalideModifCat.setEnabled(true);
+         lbl_categ1.setEnabled(true);
+         lblimage.setEnabled(true);
     }//GEN-LAST:event_ButModifCatMouseClicked
 
-    private void bvalide2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalide2MouseClicked
-        int idCat = CategorieProduit.getIdCategorie(cb_Categ.getSelectedItem().toString());
-        if(CategorieProduit.modifCat(idCat,tfcat.getText(),tfimage.getText()) == true){
-            JOptionPane.showMessageDialog(this, "La catégorie a été modifiée dans la base de données.");
-        }
-        else{
-                JOptionPane.showMessageDialog(this, "La catégorie n'a pas été modifié !");
-            }
-        
-    }//GEN-LAST:event_bvalide2MouseClicked
-
     private void ButCreerCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButCreerCatMouseClicked
-         Pan_addCat.setVisible(true);
-         tfsscat.setEditable(false);
-         cb_Categ1.enable(false);
-         bvalideSsCat.setVisible(false);
+         Pan_ResCat.setVisible(true);
+         for (Component c : PanCatSsCat.getComponents()){
+                    c.setEnabled(false);
+         } 
+         for (Component c : PannButtonSearch1.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : PannCreerCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : Pan_ResCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         tfcat.setEnabled(true);
+         tfimage.setEnabled(true);
+         bvalideAddCat.setEnabled(true);
+         lbl_categ1.setEnabled(true);
+         lblimage.setEnabled(true);
+         cb_Categ1.setSelectedIndex(0);
     }//GEN-LAST:event_ButCreerCatMouseClicked
 
     private void ButCreerSsCatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButCreerSsCatKeyPressed
@@ -2129,29 +2283,84 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_ButCreerSsCatKeyPressed
 
     private void ButCreerSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButCreerSsCatMouseClicked
-         Pan_addCat.setVisible(true);
+         Pan_ResCat.setVisible(true);
+         for (Component c : PannButtonSearch1.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : PanCatSsCat.getComponents()){
+                    c.setEnabled(false);
+         } 
+         for (Component c : PannCreerCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : Pan_ResCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         tfsscat.setEnabled(true);
+         tfsscat.setText("");
+         tfimage.setEnabled(true);
+         bvalideSsCat.setEnabled(true);
+         lbl_ssCateg1.setEnabled(true);
+         lblimage.setEnabled(true);
+         cb_Categ1.setEnabled(true);
+         cb_Categ1.setSelectedIndex(0);
     }//GEN-LAST:event_ButCreerSsCatMouseClicked
 
-    private void bvalideCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideCatMouseClicked
+    private void bvalideAddCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideAddCatMouseClicked
         int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter cette catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
         if (reply == JOptionPane.YES_OPTION){    
             if(CategorieProduit.addCat(tfcat.getText(),tfimage.getText()) == true){
             JOptionPane.showMessageDialog(this, "La catégorie a été ajoutée dans la base de données.");
             cb_Categ.removeAllItems();
-            affecterCat(); 
+            cb_Categ1.removeAllItems();
+            affecterCat();
+            Pan_ResCat.setVisible(false);
+            for (Component c : PanCatSsCat.getComponents()){
+                        c.setEnabled(true);
+             } 
+             for (Component c : PannButtonSearch1.getComponents()){
+                        c.setEnabled(true);
+             }
+             for (Component c : PannButtonSearch1.getComponents()){
+                        c.setEnabled(true);
+             }
+             for (Component c : PannCreerCat.getComponents()){
+                        c.setEnabled(true);
+             }
+             for (Component c : Pan_ResCat.getComponents()){
+                        c.setEnabled(true);
+             }
             }
             else{
                 JOptionPane.showMessageDialog(this, "La catégorie n'a pas été ajoutée !");
             }
         }
-    }//GEN-LAST:event_bvalideCatMouseClicked
+    }//GEN-LAST:event_bvalideAddCatMouseClicked
 
     private void bvalideSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideSsCatMouseClicked
-        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter cette catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter cette sous-catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
         if (reply == JOptionPane.YES_OPTION){ 
-            int idcat = Integer.valueOf(cb_Categ1.getSelectedItem().toString());
+            int idcat = CategorieProduit.getIdCategorie(cb_Categ1.getSelectedItem().toString());
             if(CategorieProduit.addSsCat(idcat,tfsscat.getText(),tfimage.getText()) == true){
-            JOptionPane.showMessageDialog(this, "La catégorie a été ajoutée dans la base de données.");
+                JOptionPane.showMessageDialog(this, "La sous-catégorie a été ajoutée dans la base de données.");
+                Pan_ResCat.setVisible(false);
+                cb_ssCateg.removeAllItems();
+                affecterTotalSsCat();
+                for (Component c : PanCatSsCat.getComponents()){
+                            c.setEnabled(true);
+                 } 
+                 for (Component c : PannButtonSearch1.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : PannButtonSearch1.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : PannCreerCat.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : Pan_ResCat.getComponents()){
+                            c.setEnabled(true);
+                 }
             }
             else{
                 JOptionPane.showMessageDialog(this, "La sous-catégorie n'a pas été ajoutée !");
@@ -2168,9 +2377,284 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     }//GEN-LAST:event_cb_Categ1ActionPerformed
 
     private void tabPCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabPCMouseClicked
-        cb_Cat.removeAllItems();
-        affecterCat();
+       
     }//GEN-LAST:event_tabPCMouseClicked
+
+    private void ButSupCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButSupCatMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer cette catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
+        if (reply == JOptionPane.YES_OPTION){ 
+            if(CategorieProduit.delCat(cb_Categ.getSelectedItem().toString())== true){
+                JOptionPane.showMessageDialog(this, "La catégorie a été supprimée de la base de données.");
+                cb_Categ.removeAllItems();
+                cb_Categ1.removeAllItems();
+                affecterCat(); 
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La catégorie n'a pas été supprimée !");
+            }
+        }  
+    }//GEN-LAST:event_ButSupCatMouseClicked
+
+    private void tabPCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabPCKeyPressed
+        
+    }//GEN-LAST:event_tabPCKeyPressed
+
+    private void tabPCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabPCMousePressed
+
+    }//GEN-LAST:event_tabPCMousePressed
+
+    private void tabPCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPCStateChanged
+            
+    }//GEN-LAST:event_tabPCStateChanged
+
+    private void Button_effacer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_effacer1MouseClicked
+        Pan_ResCat.setVisible(false);
+        for (Component c : PanCatSsCat.getComponents()){
+                    c.setEnabled(true);
+         } 
+         for (Component c : PannButtonSearch1.getComponents()){
+                    c.setEnabled(true);
+         }
+         for (Component c : PannButtonSearch1.getComponents()){
+                    c.setEnabled(true);
+         }
+         for (Component c : PannCreerCat.getComponents()){
+                    c.setEnabled(true);
+         }
+         for (Component c : Pan_ResCat.getComponents()){
+                    c.setEnabled(true);
+         }
+         cb_Categ.setSelectedIndex(0);
+         cb_ssCateg.setSelectedIndex(0);
+    }//GEN-LAST:event_Button_effacer1MouseClicked
+
+    private void ButSupSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButSupSsCatMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer cette sous-catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);    
+        if (reply == JOptionPane.YES_OPTION){ 
+            if(CategorieProduit.delSsCat(cb_ssCateg.getSelectedItem().toString())== true){
+                JOptionPane.showMessageDialog(this, "La sous-catégorie a été supprimée de la base de données.");
+                cb_ssCateg.removeAllItems();
+                affecterTotalSsCat(); 
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La sous-catégorie n'a pas été supprimée !");
+            }
+        }  
+    }//GEN-LAST:event_ButSupSsCatMouseClicked
+
+    private void bvalideModifCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideModifCatMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment modifier cette catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int idCat = CategorieProduit.getIdCategorie(cb_Categ.getSelectedItem().toString());
+        if (reply == JOptionPane.YES_OPTION){     
+            if(CategorieProduit.modifCat(idCat,tfcat.getText(),tfimage.getText())==true){
+                JOptionPane.showMessageDialog(this, "La catégorie a été modifiée dans la base de données.");
+                Pan_ResCat.setVisible(false);
+                cb_Categ.removeAllItems();
+                cb_Categ1.removeAllItems();
+                affecterCat(); 
+                for (Component c : PanCatSsCat.getComponents()){
+                            c.setEnabled(true);
+                 } 
+                 for (Component c : PannButtonSearch1.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : PannButtonSearch1.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : PannCreerCat.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : Pan_ResCat.getComponents()){
+                            c.setEnabled(true);
+                 }                    
+            }
+        else{
+                JOptionPane.showMessageDialog(this, "La catégorie n'a pas été modifiée !");
+            }
+        }
+    }//GEN-LAST:event_bvalideModifCatMouseClicked
+
+    private void ButModifSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButModifSsCatMouseClicked
+        Pan_ResCat.setVisible(true);
+         for (Component c : PanCatSsCat.getComponents()){
+                    c.setEnabled(false);
+         } 
+         for (Component c : PannButtonSearch1.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : PannCreerCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         for (Component c : Pan_ResCat.getComponents()){
+                    c.setEnabled(false);
+         }
+         tfsscat.setEnabled(true);
+         tfsscat.setText(cb_ssCateg.getSelectedItem().toString());
+         tfimage.setEnabled(true);
+         tfimage.setText(CategorieProduit.imageSsCat(cb_ssCateg.getSelectedItem().toString()));
+         bvalideModifSsCat.setEnabled(true);
+         lbl_ssCateg1.setEnabled(true);
+         lblimage.setEnabled(true);
+    }//GEN-LAST:event_ButModifSsCatMouseClicked
+
+    private void bvalideModifSsCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bvalideModifSsCatMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment modifier cette sous-catégorie ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int idssCat = CategorieProduit.getIdSsCategorie(cb_ssCateg.getSelectedItem().toString());
+        if (reply == JOptionPane.YES_OPTION){     
+            if(CategorieProduit.modifSsCat(idssCat,tfsscat.getText(),tfimage.getText())==true){
+                JOptionPane.showMessageDialog(this, "La sous-catégorie a été modifiée dans la base de données.");
+                Pan_ResCat.setVisible(false);
+                cb_ssCateg.removeAllItems();
+                affecterTotalSsCat();
+                for (Component c : PanCatSsCat.getComponents()){
+                            c.setEnabled(true);
+                 } 
+                 for (Component c : PannButtonSearch1.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : PannButtonSearch1.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : PannCreerCat.getComponents()){
+                            c.setEnabled(true);
+                 }
+                 for (Component c : Pan_ResCat.getComponents()){
+                            c.setEnabled(true);
+                 }                    
+            }
+        else{
+                JOptionPane.showMessageDialog(this, "La sous-catégorie n'a pas été modifiée !");
+            }
+        }
+    }//GEN-LAST:event_bvalideModifSsCatMouseClicked
+
+    private void Bsearch_clientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Bsearch_clientMouseClicked
+        Bdel_client.setEnabled(true);
+        tfNom.setText(Clients.getNomClient(tfNom.getText()));
+        tfPrenom.setText(Clients.getPrenomClient(tfPrenom.getText()));
+        String idClient = String.valueOf(Clients.getIdClient(tfNom.getText(),tfPrenom.getText()));
+        int idUser = Clients.getIdClient(tfNom.getText(),tfPrenom.getText());
+        tf_idclient.setText(idClient); 
+        tfpseudo.setText(Clients.getPseudo(idUser));
+    }//GEN-LAST:event_Bsearch_clientMouseClicked
+
+    private void Bdel_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bdel_clientActionPerformed
+        
+    }//GEN-LAST:event_Bdel_clientActionPerformed
+
+    private void Bcancel_clientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Bcancel_clientMouseClicked
+        tfNom.setText("");
+        tfPrenom.setText("");
+        tf_idclient.setText("");
+        tfpseudo.setText("");
+    }//GEN-LAST:event_Bcancel_clientMouseClicked
+
+    private void Bdel_clientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Bdel_clientMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer ce compte utilisateur ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int idClient = Clients.getIdClient(tfNom.getText(),tfPrenom.getText());
+        if (reply == JOptionPane.YES_OPTION){
+            if(Clients.delPseudo(idClient) == true){
+                if(Clients.delUser(idClient) == true){
+                    JOptionPane.showMessageDialog(this, "Le compte client a été supprimé de la base de données.");   
+                    tfNom.setText("");
+                    tfPrenom.setText("");
+                    tf_idclient.setText("");
+                    tfpseudo.setText("");
+                }
+            }  
+        else{
+                JOptionPane.showMessageDialog(this, "Le compte client n'a pas été supprimé !");
+            }
+        }
+    }//GEN-LAST:event_Bdel_clientMouseClicked
+
+    private void BsearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BsearchMouseClicked
+        if(tf_pourcent.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Saisissez un pourcentage s'il vous plaît.");
+        }
+        int pourcent = Integer.valueOf(tf_pourcent.getText());
+        String idSolde = String.valueOf(Promotions.recupIdSolde(pourcent));
+        tfper.setEnabled(true);
+        tfper.setText(tf_pourcent.getText());
+        tfpromo.setText(idSolde);
+        tfprom.setText(tfpromo.getText());
+        Bmodify.setEnabled(true);
+        Berase.setEnabled(true);
+        BAdd.setEnabled(false);
+        tf_pourcent.setEnabled(false);
+    }//GEN-LAST:event_BsearchMouseClicked
+
+    private void BannuleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BannuleMouseClicked
+        tf_pourcent.setText("");
+        tfpromo.setText("");
+        tfper.setText("");
+        tfprom.setText("");
+        Bmodify.setEnabled(false);
+        Berase.setEnabled(false);
+        BAdd.setEnabled(true);
+        tf_pourcent.setEnabled(true);
+        tfper.setEnabled(true);
+    }//GEN-LAST:event_BannuleMouseClicked
+
+    private void BAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BAddMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment ajouter ce pourcentage de solde ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int pourcent = Integer.valueOf(tfper.getText());
+        if (reply == JOptionPane.YES_OPTION){
+            if(Promotions.addSolde(pourcent) == true){
+                JOptionPane.showMessageDialog(this, "Le pourcentage de solde a été ajouté à la base de données.");
+                tf_pourcent.setText("");
+                tfpromo.setText("");
+                tfper.setText("");
+            }
+        else{
+                JOptionPane.showMessageDialog(this, "Le pourcentage de solde n'a pas été ajouté !");
+            }
+        }
+    }//GEN-LAST:event_BAddMouseClicked
+
+    private void BmodifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BmodifyMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment modifier ce pourcentage de solde ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int pourcent = Integer.valueOf(tfper.getText());
+        int idSolde = Integer.valueOf(tfprom.getText());
+        if (reply == JOptionPane.YES_OPTION){
+            if(Promotions.modifSolde(idSolde,pourcent) == true){
+                JOptionPane.showMessageDialog(this, "Le pourcentage de solde a été modifié dans la base de données.");
+                tf_pourcent.setText("");
+                tf_pourcent.setEnabled(true);
+                tfpromo.setText("");
+                Bmodify.setEnabled(false);
+                Berase.setEnabled(false);
+                BAdd.setEnabled(true);
+                tfper.setText("");
+                tfprom.setText("");
+            }
+        else{
+                JOptionPane.showMessageDialog(this, "Le pourcentage de solde n'a pas été modifié !");
+            }
+        }
+    }//GEN-LAST:event_BmodifyMouseClicked
+
+    private void BeraseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BeraseMouseClicked
+        int reply = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer ce pourcentage de solde ?", "Attention", JOptionPane.YES_NO_OPTION);
+        int pourcent = Integer.valueOf(tfper.getText());
+        int idSolde = Integer.valueOf(tfprom.getText());
+        if (reply == JOptionPane.YES_OPTION){
+            if(Promotions.delSolde(idSolde) == true){
+                JOptionPane.showMessageDialog(this, "Le pourcentage de solde a été supprimé à la base de données.");
+                tf_pourcent.setText("");
+                tfpromo.setText("");
+                tfper.setText("");
+                tfprom.setText("");
+                tf_pourcent.setEnabled(true);
+                Bmodify.setEnabled(false);
+                Berase.setEnabled(false);
+                BAdd.setEnabled(true);
+            }
+        else{
+                JOptionPane.showMessageDialog(this, "Le pourcentage de solde n'a pas été supprimé !");
+            }
+        }     
+    }//GEN-LAST:event_BeraseMouseClicked
     /**
      * @param args the command line arguments
      */
@@ -2182,6 +2666,14 @@ public class IHM_Catalogue extends javax.swing.JFrame{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BAdd;
+    private javax.swing.JButton Bannule;
+    private javax.swing.JButton Bcancel_client;
+    private javax.swing.JButton Bdel_client;
+    private javax.swing.JButton Berase;
+    private javax.swing.JButton Bmodify;
+    private javax.swing.JButton Bsearch;
+    private javax.swing.JButton Bsearch_client;
     private javax.swing.JButton ButAdd;
     private javax.swing.JButton ButCancel;
     private javax.swing.JButton ButCreerCat;
@@ -2198,31 +2690,37 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JButton Button_Search2;
     private javax.swing.JButton Button_effacer;
     private javax.swing.JButton Button_effacer1;
-    private javax.swing.JButton Button_effacer2;
     private javax.swing.JLabel IDFournisseur;
+    private javax.swing.JPanel PanAMSPromo;
+    private javax.swing.JPanel PanAMSSolde;
     private javax.swing.JPanel PanAdd;
-    private javax.swing.JPanel PanResCat;
+    private javax.swing.JPanel PanCatSsCat;
+    private javax.swing.JPanel PanRESclient;
     private javax.swing.JPanel PanResult;
     private javax.swing.JPanel PanSearch;
-    private javax.swing.JPanel PanSearchCat;
     private javax.swing.JPanel PanSearchClient;
+    private javax.swing.JPanel PanSearchPromo;
+    private javax.swing.JPanel PanTabClient;
+    private javax.swing.JPanel PanTabPromo;
+    private javax.swing.JPanel PanTableau;
     private javax.swing.JPanel Pan_ModifSuppr;
-    private javax.swing.JPanel Pan_addCat;
+    private javax.swing.JPanel Pan_ResCat;
+    private javax.swing.JPanel PanelAMSCat;
     private javax.swing.JPanel PanelCat;
     private javax.swing.JPanel PanelClients;
     private javax.swing.JPanel PanelProduits;
     private javax.swing.JPanel PanelPromo;
     private javax.swing.JPanel PannButtonSearch;
     private javax.swing.JPanel PannButtonSearch1;
-    private javax.swing.JPanel PannCreerModiSuppr;
+    private javax.swing.JPanel PannCreerCat;
     private javax.swing.JRadioButton Radio_non;
     private javax.swing.JRadioButton Radio_oui;
     private javax.swing.JScrollPane Scroll_description;
     private javax.swing.JTable TableauCat;
     private javax.swing.JButton butAnnuler;
-    private javax.swing.JButton bvalide2;
-    private javax.swing.JButton bvalide3;
-    private javax.swing.JButton bvalideCat;
+    private javax.swing.JButton bvalideAddCat;
+    private javax.swing.JButton bvalideModifCat;
+    private javax.swing.JButton bvalideModifSsCat;
     private javax.swing.JButton bvalideSsCat;
     private javax.swing.JComboBox<String> cb_Cat;
     private javax.swing.JComboBox<String> cb_Categ;
@@ -2235,20 +2733,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JComboBox<String> cb_ssCat1;
     private javax.swing.JComboBox<String> cb_ssCateg;
     private javax.swing.JButton jButAdd;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuItem jMCharger;
     private javax.swing.JMenuItem jMGestCat;
     private javax.swing.JMenuItem jMGestClient;
@@ -2260,12 +2744,6 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JMenuItem jMenuQuitter;
     private javax.swing.JMenuItem jMenuVersion;
     private javax.swing.JPanel jPanAjouter;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2274,13 +2752,8 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel lblNom;
+    private javax.swing.JLabel lblPrenom;
     private javax.swing.JLabel lbl_Cat;
     private javax.swing.JLabel lbl_Cate;
     private javax.swing.JLabel lbl_ID;
@@ -2296,6 +2769,8 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JLabel lbl_categ1;
     private javax.swing.JLabel lbl_cust;
     private javax.swing.JLabel lbl_description;
+    private javax.swing.JLabel lbl_idClient;
+    private javax.swing.JLabel lbl_idPromo;
     private javax.swing.JLabel lbl_prix;
     private javax.swing.JLabel lbl_prix_Reduit;
     private javax.swing.JLabel lbl_prod;
@@ -2306,21 +2781,35 @@ public class IHM_Catalogue extends javax.swing.JFrame{
     private javax.swing.JLabel lbl_ssCateg;
     private javax.swing.JLabel lbl_ssCateg1;
     private javax.swing.JLabel lblimage;
+    private javax.swing.JLabel lblper;
+    private javax.swing.JLabel lblpercent;
+    private javax.swing.JLabel lblpercent1;
+    private javax.swing.JLabel lblpourcent;
+    private javax.swing.JLabel lblprom;
+    private javax.swing.JLabel lblpseudo;
     private javax.swing.JLabel lblsolde;
     private javax.swing.JLabel percent;
     private javax.swing.JTextArea ta_description;
     private javax.swing.JTabbedPane tabPC;
+    private javax.swing.JTextField tfNom;
+    private javax.swing.JTextField tfPrenom;
     private javax.swing.JTextField tf_ID;
     private java.awt.TextField tf_ImageProd;
     private javax.swing.JTextField tf_Libelle;
     private javax.swing.JTextField tf_alerteMax;
     private javax.swing.JTextField tf_alerteMin;
+    private javax.swing.JTextField tf_idclient;
+    private javax.swing.JTextField tf_pourcent;
     private javax.swing.JTextField tf_prix;
     private javax.swing.JTextField tf_prixRed;
     private javax.swing.JTextField tf_prod;
     private javax.swing.JTextField tf_qte;
     private javax.swing.JTextField tfcat;
     private javax.swing.JTextField tfimage;
+    private javax.swing.JTextField tfper;
+    private javax.swing.JTextField tfprom;
+    private javax.swing.JTextField tfpromo;
+    private javax.swing.JTextField tfpseudo;
     private javax.swing.JTextField tfsscat;
     // End of variables declaration//GEN-END:variables
 }
